@@ -25,9 +25,8 @@ Class 1 Cheat Sheet
 
 Class 1 Demonstration (notes to self)
 ------------------------------------------------------------------------
-* woodish color = rgb(140, 115, 85)
 * whiteboard Towers of Hanoi
-* start by drawing the board and pegs with magic numbers
+* start by drawing the board and pegs with magic numbers --  woodish color = rgb(140, 115, 85)
 * refactor with variables and then change some around
 * draw the rings (use {0,0,0,0} for empty pegs)
 * detect which peg was clicked...OOPS. let's refactor into functions
