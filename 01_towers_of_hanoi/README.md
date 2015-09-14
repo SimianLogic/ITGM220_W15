@@ -41,5 +41,5 @@ Class 1 Homework
 * download the Towers of Hanoi code from Github (https://github.com/SimianLogic/ITGM220_W15)
 * add a variable to track how many moves have been taken (where a move is pickup + put down) and display it onscreen somewhere (see "text")
 * add an additional ring to the puzzle (5 rings instead of 4)
-* make it the game doesn't allow me to make an invalid move (I can only put a small ring on a larger ring)
+* make it so the game doesn't allow me to make an invalid move (I can only put a small ring on a larger ring)
 * change the colors so that each ring is a distinct color
