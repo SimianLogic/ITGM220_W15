@@ -1,9 +1,13 @@
 size(800,600);
 
+int[] peg_1 = {4,3,2,1};
+int[] peg_2 = {0,0,0,0};
+int[] peg_3 = {0,0,0,0};
+
 int base_y = 500;
 int peg_spacing = 200;
 int peg_height = 250;
-int peg_width = 50;
+int peg_width = 35;
 
 
 //rgb(140, 115, 85)
@@ -17,4 +21,17 @@ for(int i = 1; i <= 3; i++)
         base_y - peg_height,
         peg_width,
         peg_height);
+}
+
+int disc_height = 25;
+int disc_width = 50;
+
+for(int i = 0; i < peg_1.length; i++)
+{
+  fill(0,255,0);
+  
+  //the width of an individual disc
+  int temp_width = disc_width*peg_1[i];
+  //draw a disc
+  rect(peg_spacing*1 - temp_width/2, base_y - disc_height*(i+1), temp_width, disc_height);
 }
