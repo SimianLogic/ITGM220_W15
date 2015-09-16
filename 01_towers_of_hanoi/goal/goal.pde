@@ -1,23 +1,33 @@
-float baseY = 500;
-float pegSpacing = 200;
-float pegWidth = 25;
-float pegHeight = 200;
-  
-int[] peg1 = {4,3,2,1};
-int[] peg2 = {0,0,0,0};
-int[] peg3 = {0,0,0,0};
+// DONE: whiteboard Tower of Hanoi
+// DONE: draw the board & pegs with magic numbers. woodish color = rgb(140, 115, 85)
+// DONE: refactor with variables and then change some around
+// DONE: draw the discs (use {0,0,0,0} for empty pegs)
+// DONE: detect which peg was clicked...OOPS. let's refactor into functions
+// DONE: detect which peg was clicked, add a variable for selectedRing, take disc off a peg
+// DONE: write code to put a disc down on a peg
+// DONE: explain the difference between pass-by-value and pass-by-reference
+// DONE: pseudo-code homework assignments on whiteboard
 
-int selectedRing = 0;
-int selectedX = 400;
-int selectedY = 100;
+//HW: change the pegs to hold 5 discs
+int[] peg1 = {5,4,3,2,1};
+int[] peg2 = {0,0,0,0,0};
+int[] peg3 = {0,0,0,0,0};
 
-int ringHeight = 25;
-int ringWidth = 35;
-  
+//HW: make a variable to keep track of how many moves (pick up + put down) we've made
+
+int selectedDisc = 0;
+
+int baseY = 500;
+int pegSpacing = 200;
+int pegHeight = 250;
+int pegWidth = 25;
+
+int discHeight = 25;
+int discWidth = 40;
+
 void setup()
 {
   size(800,600);
-  
 }
 
 void draw()
@@ -25,107 +35,107 @@ void draw()
   fill(180,180,180);
   rect(0,0,800,600);
   
+   //rgb(140, 115, 85)
   fill(140, 115, 85);
   
-  //draw the base
   rect(0,baseY,800,100);
+  
   for(int i = 1; i <= 3; i++)
   {
-    rect(pegSpacing*i - pegWidth/2, baseY - pegHeight, pegWidth, pegHeight);
+    rect(  pegSpacing*i - pegWidth/2, 
+          baseY - pegHeight,
+          pegWidth,
+          pegHeight);
   }
-
-  //draw the rings
-  drawPeg(peg1, 1);
-  drawPeg(peg2, 2);
-  drawPeg(peg3, 3);
   
-  //draw the selected ring
-  if(selectedRing != 0)
+  drawPeg(1, peg1);
+  drawPeg(2, peg2);
+  drawPeg(3, peg3);
+  
+  if(selectedDisc > 0)
   {
-    fill(0,0,255);
-    rect(selectedX - selectedRing*ringWidth/2, selectedY, selectedRing*ringWidth, ringHeight);
+    //HW: draw the selected disc with the correct color for its size
+    fill(0,255,0);
+    rect(400 - selectedDisc*discWidth/2, 100, discWidth*selectedDisc, discHeight);
   }
+  
+  //HW: draw how many moves we've taken somewhere on screen
 }
 
-void drawPeg(int[] ring_array, int peg)
+void drawPeg(int which_peg, int[] discs)
 {
-  fill(0,0,255);
-  for(int i = 0; i < ring_array.length; i++)
+  //HW: draw these discs with the correct color for their sizes
+  for(int i = 0; i < discs.length; i++)
   {
-    if(ring_array[i] > 0)
+    fill(0,255,0);
+    
+    if(discs[i] > 0)
     {
-      rect(pegSpacing*peg - ring_array[i]*ringWidth/2, baseY - ringHeight*(i+1), ring_array[i]*ringWidth, ringHeight);
+      //the width of an individual disc
+      int temp_width = discWidth*discs[i];
+      //draw a disc
+      rect(pegSpacing*which_peg - temp_width/2, baseY - discHeight*(i+1), temp_width, discHeight);
     }
-  }
+  } 
 }
 
 void mouseClicked()
 {
-  int max_ring_width = ringWidth*4;
-  
   for(int i = 1; i <= 3; i++)
   {
-    if(mouseX > pegSpacing*i - max_ring_width && mouseX < pegSpacing*i + max_ring_width)
+    if(mouseX > pegSpacing*i - discWidth*peg1.length/2 && mouseX < pegSpacing*i + discWidth*peg1.length/2)
     {
-      handleClick(i);
+       if(selectedDisc == 0)
+       {
+         if(i == 1)
+         {
+           maybeTakeSomethingFrom(peg1);
+         }else if(i == 2){
+           maybeTakeSomethingFrom(peg2);
+         }else{
+           maybeTakeSomethingFrom(peg3);
+         } 
+       }else{
+         if(i == 1)
+         {
+           maybePutSomethingDown(peg1);
+         }else if(i == 2){
+           maybePutSomethingDown(peg2);
+         }else{
+           maybePutSomethingDown(peg3);
+         }
+         
+       }
+       
     }
   }
 }
 
-void handleClick(int column)
+void maybePutSomethingDown(int[] which_peg)
 {
-  if(selectedRing == 0)
+  for(int i = 0; i < which_peg.length; i++)
   {
-    if(column == 1)
+    if(which_peg[i] == 0)
     {
-      selectedRing = removeLast(peg1);
-    }else if(column == 2){
-      selectedRing = removeLast(peg2);
-    }else{
-      selectedRing = removeLast(peg3);
+      //put the selected disc into the first available spot
+      //HW: see if this spot is SMALLER than the one below it (if one is below)
+      which_peg[i] = selectedDisc;
+      selectedDisc = 0;
     }
-    
-  }else{
-    
-    if(column == 1)
-    {
-      selectedRing = addRing(peg1, selectedRing);
-    }else if(column == 2){
-      selectedRing = addRing(peg2, selectedRing);
-    }else{
-      selectedRing = addRing(peg3, selectedRing);
-    }
-        
   }
 }
 
-//if there's a ring above 0, return the last one and set the value to 0
-int removeLast(int[] peg)
+void maybeTakeSomethingFrom(int[] which_peg)
 {
-  for(int i = peg.length-1; i >= 0; i--)
+  for(int i = which_peg.length-1; i >= 0; i--)
   {
-    if(peg[i] > 0)
+    if(which_peg[i] != 0)
     {
-      int value = peg[i];
-      peg[i] = 0;
-      return value;
-    }
-  }
-  return 0;
-}
-
-//if there's space, add a ring to the top
-int addRing(int[] peg, int value)
-{
-  for(int i = 0; i < peg.length; i++)
-  {
-    if(peg[i] == 0)
-    {
-      peg[i] = value;
-      return 0;
+      selectedDisc = which_peg[i];
+      which_peg[i] = 0;
+      //it's important to return so we don't pick up the next one as well!
+      return;
     }
   }
   
-  //couldn't place it, stay where you are!
-  return value;
 }
