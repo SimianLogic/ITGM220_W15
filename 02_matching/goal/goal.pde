@@ -11,10 +11,14 @@
 
 //DONE: whiteboard simple 4x4 matching game
 //DONE: create a 2D array (4x4) to hold the state of our board
-//TODO: populate the array with random "match game" data
-//TODO: explain what an exception is (try doing a 5x5 array)
-//TODO: draw face down tiles and add logic for detecting which tile has been clicked
-//TODO: create in-game state variables for FIRST,SECOND,CONTINUE
+//DONE: populate the array with random "match game" data
+//DONE: create an array of Colors and draw the board so we can see the "goal"
+//DONE: refactor int[][] into Tile(value) with new Tile -> value, isFaceUp, isFinal
+//DONE: draw face down tiles and add logic for detecting which tile has been clicked
+//DONE: add isFinal state to Tile
+
+//HW BONUS: add a 2nd button to the menu that toggles the difficulty from easy to hard
+//HW BONUS: add dynamic text ot the home screen that shows the current difficulty
 
 Button startButton = new Button();
 PImage background;
@@ -24,7 +28,28 @@ final int GAME_STATE = 2;
 
 int currentState = MENU_STATE;
 
-int[][] gameData;
+//HW: replace these colors with images for the cardback and an image for each tile
+Color tileBack = new Color(255,255,255);
+Color[] tileColors = {
+  new Color(255, 0, 0),
+  new Color(0, 255, 0),
+  new Color(0, 0, 255),
+  new Color(255, 255, 0),
+  new Color(255, 0, 255),
+  new Color(0, 255, 255),
+  new Color(128, 0, 0),
+  new Color(0, 128, 0),
+  new Color(0, 0, 128)
+};
+
+Tile[][] gameData;
+int rows = 4;
+int columns = 4;
+int tileWidth = 100;
+int tileHeight = 100;
+
+final int MATCH_COOLDOWN = 30;
+int matchCooldown = 30;
 
 void setup()
 {
@@ -52,10 +77,108 @@ void draw()
     image(background, 0, 0);
     startButton.draw();
   }else{
-    fill(255,255,255);
-    rect(0,0,800,600);
+    drawGameplay();
   }
   
+}
+
+void drawGameplay()
+{
+  if(matchCooldown > 0)
+  {
+    matchCooldown -= 1;
+    println(matchCooldown);
+    //when we hit 0 (and only once), reset all tiles
+    if(matchCooldown == 0)
+    {
+      for(int i = 0; i < columns; i++)
+      {
+        for(int j = 0; j < rows; j++)
+        {
+          if(!gameData[i][j].isFinal)
+          {
+            gameData[i][j].isFaceUp = false;
+          }
+        }
+      }
+      
+    }
+  }
+  
+  int start_x = 400 - (tileWidth*rows)/2;
+  int start_y = 300 - (tileHeight*columns)/2;
+  
+  fill(255,255,255);
+  rect(0,0,800,600);
+  
+  for(int i = 0; i < gameData.length; i++)
+  {
+    for(int j = 0; j < gameData[0].length; j++)
+    {
+      Tile which_tile = gameData[i][j];
+      if(which_tile.isFaceUp)
+      {
+        tileColors[which_tile.value].apply();
+      }else{
+        tileBack.apply();
+      }
+      
+      rect(start_x + i*tileWidth, start_y + j*tileHeight, tileWidth, tileHeight);
+    }
+  }
+}
+
+void mouseClicked()
+{
+  
+  if(currentState == GAME_STATE)
+  {
+    int start_x = 400 - (tileWidth*rows)/2;
+    int start_y = 300 - (tileHeight*columns)/2;
+    
+    int x = floor((mouseX - start_x)/tileWidth);
+    int y = floor((mouseY - start_y)/tileHeight);
+    
+    println("CLICKED ON " + x + "," + y);
+    if(x >= 0 && x < columns && y >= 0 && y < rows)
+    {
+      gameData[x][y].flip();
+    }else{
+      println("OUT");
+    }
+    
+    checkForMatches();
+  }
+}
+
+//HW: Check to see if all the matches have been found
+//If the game is over, render a GameOver button that returns us to the main screen
+void checkForMatches()
+{
+  Tile selected = null;
+  for(int i = 0; i < columns; i++)
+  {
+    for(int j = 0; j < rows; j++)
+    {
+      if(gameData[i][j].isFaceUp && !gameData[i][j].isFinal)
+      {
+        if(selected == null)
+        {
+          selected = gameData[i][j];
+        }else{
+          if(selected.value == gameData[i][j].value)
+          {
+            println("ITS A MATCH");
+            selected.isFinal = true;
+            gameData[i][j].isFinal = true;
+          }else{
+            println("NO MATCH");
+            matchCooldown = MATCH_COOLDOWN;
+          }
+        }
+      }
+    }
+  }
 }
 
 void mousePressed()
@@ -85,11 +208,8 @@ void mouseReleased()
 
 void setupGame()
 {
-  int width = 4;
-  int height = 4;
-  
   IntList pool = new IntList();
-  for(int i = 1; i <= width*height/2; i ++)
+  for(int i = 1; i <= rows*columns/2; i ++)
   {
     pool.append(i);
     pool.append(i);
@@ -101,16 +221,17 @@ void setupGame()
   println(pool);
   
   //now let's declare our grid
-  gameData = new int[width][height];
+  gameData = new Tile[rows][columns];
   
   int pool_index = 0; //we could use row*width + column to compute this, but easier to just keep a running tally
-  for(int i = 0; i < width; i++)
+  for(int i = 0; i < rows; i++)
   {
-    for(int j = 0; j < height; j++)
+    for(int j = 0; j < columns; j++)
     {
-      gameData[i][j] = pool.get(pool_index);
+      gameData[i][j] = new Tile(pool.get(pool_index));
+      
       pool_index++;
     }
-    println(gameData[i]);
+    
   }
 }
