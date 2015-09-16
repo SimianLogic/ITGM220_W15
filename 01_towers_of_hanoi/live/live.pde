@@ -1,16 +1,26 @@
-int[] peg_1 = {4,3,2,1};
-int[] peg_2 = {0,0,0,0};
-int[] peg_3 = {0,0,0,0};
+// DID: whiteboard Tower of Hanoi
+// DID: draw the board & pegs with magic numbers. woodish color = rgb(140, 115, 85)
+// DID: refactor with variables and then change some around
+// DID: draw the discs (use {0,0,0,0} for empty pegs)
+// DID: detect which peg was clicked...OOPS. let's refactor into functions
+// DID: detect which peg was clicked, add a variable for selectedRing, take disc off a peg
+// TODO: write code to put a disc down on a peg
+// TODO: explain the difference between pass-by-value and pass-by-reference
+// TODO: pseudo-code homework assignments on whiteboard
 
-int selectedDisk = 0;
+int[] peg1 = {4,3,2,1};
+int[] peg2 = {0,0,0,0};
+int[] peg3 = {0,0,0,0};
 
-int base_y = 500;
-int peg_spacing = 200;
-int peg_height = 250;
-int peg_width = 35;
+int selectedDisc = 0;
 
-int disc_height = 25;
-int disc_width = 50;
+int baseY = 500;
+int pegSpacing = 200;
+int pegHeight = 250;
+int pegWidth = 35;
+
+int discHeight = 25;
+int discWidth = 50;
 
 void setup()
 {
@@ -25,39 +35,39 @@ void draw()
    //rgb(140, 115, 85)
   fill(140, 115, 85);
   
-  rect(0,base_y,800,100);
+  rect(0,baseY,800,100);
   
   for(int i = 1; i <= 3; i++)
   {
-    rect(  peg_spacing*i - peg_width/2, 
-          base_y - peg_height,
-          peg_width,
-          peg_height);
+    rect(  pegSpacing*i - pegWidth/2, 
+          baseY - pegHeight,
+          pegWidth,
+          pegHeight);
   }
   
-  drawPeg(1, peg_1);
-  drawPeg(2, peg_2);
-  drawPeg(3, peg_3);
+  drawPeg(1, peg1);
+  drawPeg(2, peg2);
+  drawPeg(3, peg3);
   
-  if(selectedDisk > 0)
+  if(selectedDisc > 0)
   {
     fill(0,255,0);
-    rect(400 - selectedDisk*disc_width/2, 100, disc_width*selectedDisk, disc_height);
+    rect(400 - selectedDisc*discWidth/2, 100, discWidth*selectedDisc, discHeight);
   }
 }
 
-void drawPeg(int which_peg, int[] disks)
+void drawPeg(int which_peg, int[] discs)
 {
-  for(int i = 0; i < disks.length; i++)
+  for(int i = 0; i < discs.length; i++)
   {
     fill(0,255,0);
     
-    if(disks[i] > 0)
+    if(discs[i] > 0)
     {
       //the width of an individual disc
-      int temp_width = disc_width*disks[i];
+      int temp_width = discWidth*discs[i];
       //draw a disc
-      rect(peg_spacing*which_peg - temp_width/2, base_y - disc_height*(i+1), temp_width, disc_height);
+      rect(pegSpacing*which_peg - temp_width/2, baseY - discHeight*(i+1), temp_width, discHeight);
     }
   } 
 }
@@ -66,35 +76,30 @@ void mouseClicked()
 {
   for(int i = 1; i <= 3; i++)
   {
-    if(mouseX > peg_spacing*i - disc_width*peg_1.length/2 && mouseX < peg_spacing*i + disc_width*peg_1.length/2)
+    if(mouseX > pegSpacing*i - discWidth*peg1.length/2 && mouseX < pegSpacing*i + discWidth*peg1.length/2)
     {
-       if(selectedDisk == 0)
+       if(selectedDisc == 0)
        {
-          selectedDisk = pickSomethingFrom(i); 
+          selectedDisc = pickSomethingFrom(i); 
        }else{
-         putSomethingDown(i, selectedDisk);
+         //putSomethingDown(i, selectedDisc);
        }
        
     }
   }
 }
 
-int putSomethingDown(int which_peg, int disc_value)
-{
-  
-}
-
 int pickSomethingFrom(int which_peg)
 {
   if(which_peg == 1)
   {
-    for(int i = peg_1.length-1; i >= 0; i--)
+    for(int i = peg1.length-1; i >= 0; i--)
     {
-      if(peg_1[i] != 0)
+      if(peg1[i] != 0)
       {
-        int disk = peg_1[i];
-        peg_1[i] = 0;
-        return disk;
+        int disc = peg1[i];
+        peg1[i] = 0;
+        return disc;
       }
     }
   }
