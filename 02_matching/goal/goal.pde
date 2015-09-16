@@ -232,6 +232,5 @@ void setupGame()
       
       pool_index++;
     }
-    
   }
 }
