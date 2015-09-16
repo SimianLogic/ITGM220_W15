@@ -23,18 +23,6 @@ Class 1 Cheat Sheet
 * draw() runs every frame
 * mouseClicked() runs every time the mouse is clicked
 
-Class 1 Demonstration (notes to self)
-------------------------------------------------------------------------
-* whiteboard Towers of Hanoi
-* start by drawing the board and pegs with magic numbers --  woodish color = rgb(140, 115, 85)
-* refactor with variables and then change some around
-* draw the rings (use {0,0,0,0} for empty pegs)
-* detect which peg was clicked...OOPS. let's refactor into functions
-* now detect which peg was clicked, then add a variable for selectedRing
-* write the removeLast function to remove the last item into selectedRing
-* write the addRing function which puts a ring down
-* wrap-up!
-
 Class 1 Homework
 ------------------------------------------------------------------------
 * download the Towers of Hanoi code from Github (https://github.com/SimianLogic/ITGM220_W15)
