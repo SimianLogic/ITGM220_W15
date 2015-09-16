@@ -22,7 +22,7 @@ Class 2 Homework
 * add a guess counter with a label for how many guesses have been made
 * write the logic to detect game over. when in the game over state, show a button that returns you to the menu
 
-* BONUS: add a diffiulcty modifier
+* BONUS: add a difficulty modifier
   * add a button to the main menu that changes the difficulty from "easy" (4x4) to "hard" (6x4)
   * add dynamic text that shows the currently selected difficulty (default to easy)
   * add the game logic/images/colors so that the game is playable at the "hard" difficulty
