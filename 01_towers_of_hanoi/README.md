@@ -13,7 +13,7 @@ Class 1 Cheat Sheet
 
 * in Java, a function is composed of
   * a set of inputs a
-  * single output (or void)
+  * single output (or void/nothing)
   * a block of code that executes against the inputs
 
 * fill(r,g,b) is used to change "paints"
