@@ -4,8 +4,8 @@
 // DID: draw the discs (use {0,0,0,0} for empty pegs)
 // DID: detect which peg was clicked...OOPS. let's refactor into functions
 // DID: detect which peg was clicked, add a variable for selectedRing, take disc off a peg
-// TODO: write code to put a disc down on a peg
-// TODO: explain the difference between pass-by-value and pass-by-reference
+// DID: write code to put a disc down on a peg
+// DID: explain the difference between pass-by-value and pass-by-reference
 // TODO: pseudo-code homework assignments on whiteboard
 
 int[] peg1 = {4,3,2,1};
@@ -54,6 +54,7 @@ void draw()
     fill(0,255,0);
     rect(400 - selectedDisc*discWidth/2, 100, discWidth*selectedDisc, discHeight);
   }
+  
 }
 
 void drawPeg(int which_peg, int[] discs)
@@ -76,33 +77,67 @@ void mouseClicked()
 {
   for(int i = 1; i <= 3; i++)
   {
+    //using the mouseX, figure out which column/peg we clicked on and pass that peg's
+    //data to the appropriate put down / pick up
     if(mouseX > pegSpacing*i - discWidth*peg1.length/2 && mouseX < pegSpacing*i + discWidth*peg1.length/2)
     {
        if(selectedDisc == 0)
        {
-          selectedDisc = pickSomethingFrom(i); 
+          if(i == 1)
+         {
+           maybePickSomethingFrom(peg1);
+         }else if(i == 2){
+           maybePickSomethingFrom(peg2);
+         }else{
+           maybePickSomethingFrom(peg3);
+         } 
        }else{
-         //putSomethingDown(i, selectedDisc);
+         if(i == 1)
+         {
+           maybePutSomethingDown(peg1);
+         }else if(i == 2){
+           maybePutSomethingDown(peg2);
+         }else{
+           maybePutSomethingDown(peg3);
+         }
        }
        
     }
   }
 }
 
-int pickSomethingFrom(int which_peg)
+//try to put a disc into the peg array that's passed in
+void maybePutSomethingDown(int[] peg_data)
 {
-  if(which_peg == 1)
+  for(int i = 0; i < peg_data.length; i++)
   {
-    for(int i = peg1.length-1; i >= 0; i--)
+    //test to see if we found an empty
+    if(peg_data[i] == 0)
     {
-      if(peg1[i] != 0)
-      {
-        int disc = peg1[i];
-        peg1[i] = 0;
-        return disc;
-      }
+      peg_data[i] = selectedDisc;
+      selectedDisc = 0;
+      return;
+    }
+  }
+}
+
+//try to pick something up from the peg array that's passed in
+void maybePickSomethingFrom(int[] peg_data)
+{
+  //start at the top and work backwards
+  for(int i = peg_data.length-1; i >= 0; i--)
+  {
+    
+    //if we find a non-zero int, that's a ring. pick it up!
+    if(peg_data[i] != 0)
+    {
+      println("PICK UP ITEM " + i);
+      //pick up this disc
+      selectedDisc = peg_data[i];
+      peg_data[i] = 0;
+      return;
     }
   }
   
-  return 0;
+ 
 }
