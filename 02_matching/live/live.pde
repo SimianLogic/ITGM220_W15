@@ -14,9 +14,9 @@
 //DONE: create a 2D array (4x4) to hold the state of our board
 //DONE: populate the array with random "match game" data
 //DONE: create an array of Colors and draw the board so we can see the "goal"
-//DONE: refactor int[][] into Tile(value) with new Tile -> value, isFaceUp, isFinal
-//DONE: draw face down tiles and add logic for detecting which tile has been clicked
-//DONE: add isFinal state to Tile
+//TODO: refactor int[][] into Tile(value) with new Tile -> value, isFaceUp, isFinal
+//TODO: draw face down tiles and add logic for detecting which tile has been clicked
+//TODO: add isFinal state to Tile
 
 //HW BONUS: add a 2nd button to the menu that toggles the difficulty from easy to hard
 //HW BONUS: add dynamic text ot the home screen that shows the current difficulty
@@ -38,6 +38,19 @@ int tileWidth = 100;
 int tileHeight = 100;
 int tileStartX = 400 - gridWidth*tileWidth/2;
 int tileStartY = 300 - gridHeight*tileHeight/2;
+
+Color tileBack = new Color(255,255,255);
+Color[] tileColors = {
+  new Color(255, 0, 0),
+  new Color(0, 255, 0),
+  new Color(0, 0, 255),
+  new Color(255, 255, 0),
+  new Color(255, 0, 255),
+  new Color(0, 255, 255),
+  new Color(128, 0, 0),
+  new Color(0, 128, 0),
+  new Color(0, 0, 128)
+};
 
 void setup()
 {
@@ -83,8 +96,25 @@ void drawGameStuff()
   {
     for(int j = 0; j < 4; j++)
     {
+      
+      int grid_value = grid[i][j];
+      tileColors[grid_value].apply();
+      
+      rect(tileStartX + i*tileWidth,  //tile x value
+          tileStartY + j*tileHeight,  //tile y value
+          tileWidth,
+          tileHeight);
+      
     }
   }
+}
+
+void mouseClicked()
+{
+  int tile_column = floor((mouseX - tileStartX) / tileWidth);
+  int tile_row = floor((mouseY - tileStartY) / tileHeight);
+  
+  println(tile_column + "," + tile_row);
 }
 
 void mousePressed()
@@ -115,7 +145,7 @@ void setupGame()
   //goal here is to have a list of tiles that we can place in the grid
   //that are randomized
   IntList possible_tiles = new IntList();
-  for(int i = 1; i <= gridWidth*gridHeight/2; i++)
+  for(int i = 0; i < gridWidth*gridHeight/2; i++)
   {
     possible_tiles.append(i);
     possible_tiles.append(i);
