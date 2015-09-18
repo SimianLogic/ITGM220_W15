@@ -48,7 +48,7 @@ class Rectangle
   
   Boolean containsPoint(float test_x, float test_y)
   {
-    if(test_x > x && test_x < x+width && test_y > y && test_y < y + height)
+    if(test_x > left() && test_x < right() && test_y > top() && test_y < bottom())
     {
       return true;
     }else{
@@ -56,5 +56,18 @@ class Rectangle
     }
   }
   
+  Boolean intersects(Rectangle test)
+  {
+    float delta_x = abs(test.x - x);
+    float delta_y = abs(test.y - y);
+    
+    //proof by contradiction!
+    if(left()  > test.right()) return false;
+    if(right() < test.left()) return false;
+    if(top() > test.bottom()) return false;   //seems opposite because of y-down...
+    if(bottom() < test.top()) return false;   //seems opposite because of y-down...
+    
+    return true;
+  }
   
 }
