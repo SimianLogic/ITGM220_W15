@@ -2,6 +2,14 @@ class BoardScreen extends GameScreen
 {
   Rectangle[][] board;
   
+  
+  int rows = 8;
+  int columns = 8;
+    
+  //will be assigned in the constructor
+  float tileWidth;
+  float tileHeight;
+  
   BoardScreen()
   {
     super("chess_game.png");
@@ -19,14 +27,13 @@ class BoardScreen extends GameScreen
     
     float board_width = 500;
     float board_height = 500;
-    int rows = 8;
-    int columns = 8;
     
-    float tile_width = board_width / rows;
-    float tile_height = board_height / rows;
     
-    float start_x = 400 - board_width/2 + tile_width/2;
-    float start_y = 300 - board_height/2 + tile_height/2;
+    tileWidth = board_width / rows;
+    tileHeight = board_height / rows;
+    
+    float start_x = 400 - board_width/2 + tileWidth/2;
+    float start_y = 300 - board_height/2 + tileHeight/2;
     
     board = new Rectangle[columns][rows];
     for(int i = 0; i < columns; i++)
@@ -36,9 +43,9 @@ class BoardScreen extends GameScreen
         Rectangle tile;
         if(i%2 == j%2)
         {
-          board[i][j] = new Rectangle(start_x + i*tile_width,start_y + j*tile_height,tile_width, tile_height, color(255,255,255));
+          board[i][j] = new Rectangle(start_x + i*tileWidth,start_y + j*tileHeight,tileWidth, tileHeight, color(255,255,255));
         }else{
-          board[i][j] = new Rectangle(start_x + i*tile_width,start_y + j*tile_height,tile_width, tile_height, color(0,0,0));
+          board[i][j] = new Rectangle(start_x + i*tileWidth,start_y + j*tileHeight,tileWidth, tileHeight, color(0,0,0));
         }
         
       }
@@ -51,11 +58,25 @@ class BoardScreen extends GameScreen
   {
     super.draw();
     
-    for(int i = 0; i < board[0].length; i++)
+    for(int i = 0; i < columns; i++)
     {
-      for(int j = 0; j < board[0].length; j++)
+      for(int j = 0; j < rows; j++)
       {
         board[i][j].draw();
+      }
+    }
+  }
+  
+  void mouseClicked()
+  {
+    for(int i = 0; i < columns; i++)
+    {
+      for(int j = 0; j < rows; j++)
+      {
+        if(board[i][j].containsPoint(mouseX,mouseY))
+        {
+          println("CLICKED " + i + "," + j);
+        }
       }
     }
   }

@@ -1,18 +1,18 @@
+//KEY CONCEPTS: ArrayList, for-each statement, Switch statement, subclass + super  
+
+//INTRODUCTION (Starter Code)
 //TODO: whoops! color is a Primitive. let's look at color reference and delete our Color class
 //TODO: show refactored Rectangle class
 //TODO: show refactored Button class that takes 3 Rects
-
-
 //TODO: show refactored GameScreen and explain how it comes from MatchGame and MatchMenu
 //TODO: explain what an ArrayList is. explain what a for-each loop is (cannot modify)
-//TODO: add a currentScreen, menuScreen, and boardScreen
+//TODO: explain how we switched from STATE as an int to STATE as a GameScreen
 //TODO: explain what a Switch statment is. Break; Fall-through
-//TODO: add a button to the main menu screen that changes state
+//TODO: explain what a subclass is. show BoardScreen's constructor
+//TODO: explain the difference between "generic" use of a class and subclass
+//TODO: show grid of Rectangles on the board with mouse input
 
-//TODO: explain what a subclass is. create a BoardScreen and change data types
-//TODO: in BoardScreen's constructor, add a back button. explain the difference between "generic" use of a class and subclass
-//TODO: add a grid of Rectangles to the board
-
+//LIVE DEMO
 
 
 GameScreen currentScreen;
@@ -55,6 +55,11 @@ void keyPressed()
 void keyReleased()
 {
   currentScreen.keyReleased();
+}
+
+void mouseClicked()
+{
+  currentScreen.mouseClicked();
 }
 
 void mousePressed()

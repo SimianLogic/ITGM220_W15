@@ -31,6 +31,10 @@ class GameScreen
   {
   }
   
+  void mouseClicked()
+  {
+  }
+  
   void mousePressed()
   {
     for(Button button : buttonList) 
