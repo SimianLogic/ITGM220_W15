@@ -22,52 +22,12 @@ final int MENU_STATE = 1;
 final int GAME_STATE = 2;
 int currentState = MENU_STATE;
 
-PongMenuScreen menuScreen;
-PongGameScreen gameScreen;
-
 
 void setup()
 {
   size(800,600);
-  frameRate(60);
-  
-  menuScreen = new PongMenuScreen();
-  gameScreen = new PongGameScreen();
 }
-
 
 void draw()
 {
-  if(currentState == MENU_STATE)
-  {
-    menuScreen.draw();
-  }else{
-    gameScreen.draw();
-  }
-}
-
-void keyPressed()
-{
-  gameScreen.keyPressed();
-}
-
-void keyReleased()
-{
-  gameScreen.keyReleased();
-}
-
-void mousePressed()
-{
-  menuScreen.mousePressed();
-}
-
-void mouseReleased()
-{
-  menuScreen.mouseReleased();
-  
-  if(menuScreen.buttonPressed)
-  {
-    menuScreen.buttonPressed = false;
-    currentState = GAME_STATE;
-  }
 }

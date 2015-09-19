@@ -3,10 +3,9 @@
 Class 3 Cheat Sheet
 ------------------------------------------------------------------------
 * it's a good practice to make every screen its own class
-* a switch statement is a nice way to loop through many possible options
-* use "break" to keep statements from "falling through"
 * in Java, "this" is a way for an object to refer to itself. this is handy for variables that have been "covered up"
 * a "run loop" is a centeral loop from which all animation/activity in a game come from
+* frameRate allows you to set the FASTEST speed that your program will run
 
 
 Class 3 Homework
@@ -21,5 +20,5 @@ Class 3 Homework
 
 * BONUS
   * add "light tails to the ball"
-  * make it so the ball speeds up with every hit
+  * make it so the ball speeds up with every hit (and resets when a point is scored)
   
