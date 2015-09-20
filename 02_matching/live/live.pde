@@ -14,6 +14,8 @@
 //DONE: create a 2D array (4x4) to hold the state of our board
 //DONE: populate the array with random "match game" data
 //DONE: create an array of Colors and draw the board so we can see the "goal"
+
+//TODO: explain color primitive and why we killed the Color class
 //TODO: refactor int[][] into Tile(value) with new Tile -> value, isFaceUp, isFinal
 //TODO: draw face down tiles and add logic for detecting which tile has been clicked
 //TODO: add isFinal state to Tile
@@ -39,17 +41,17 @@ int tileHeight = 100;
 int tileStartX = 400 - gridWidth*tileWidth/2;
 int tileStartY = 300 - gridHeight*tileHeight/2;
 
-Color tileBack = new Color(255,255,255);
-Color[] tileColors = {
-  new Color(255, 0, 0),
-  new Color(0, 255, 0),
-  new Color(0, 0, 255),
-  new Color(255, 255, 0),
-  new Color(255, 0, 255),
-  new Color(0, 255, 255),
-  new Color(128, 0, 0),
-  new Color(0, 128, 0),
-  new Color(0, 0, 128)
+color tileBack = color(255,255,255);
+color[] tileColors = {
+  color(255, 0, 0),
+  color(0, 255, 0),
+  color(0, 0, 255),
+  color(255, 255, 0),
+  color(255, 0, 255),
+  color(0, 255, 255),
+  color(128, 0, 0),
+  color(0, 128, 0),
+  color(0, 0, 128)
 };
 
 void setup()
@@ -58,9 +60,9 @@ void setup()
   splashScreen = loadImage("title_screen.png");
   
   startButton = new Button(250, 250, 300, 100, 
-        new Color(0,255,0), 
-        new Color(0,180,0), 
-        new Color(0,100,0));
+        color(0,255,0), 
+        color(0,180,0), 
+        color(0,100,0));
   
   //startButton = new Button();
   //startButton.x = 250;
@@ -68,9 +70,9 @@ void setup()
   //startButton.width = 300;
   //startButton.height= 100;
   
-  //startButton.upColor = new Color(0, 255, 0);
-  //startButton.overColor = new Color(0, 180, 0);
-  //startButton.downColor = new Color(0, 100, 0);
+  //startButton.upColor = new color(0, 255, 0);
+  //startButton.overColor = new color(0, 180, 0);
+  //startButton.downColor = new color(0, 100, 0);
   
   println("startButton.x = " + startButton.x);
 }
@@ -98,7 +100,7 @@ void drawGameStuff()
     {
       
       int grid_value = grid[i][j];
-      tileColors[grid_value].apply();
+      fill(tileColors[grid_value]);
       
       rect(tileStartX + i*tileWidth,  //tile x value
           tileStartY + j*tileHeight,  //tile y value

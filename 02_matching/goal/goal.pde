@@ -12,7 +12,7 @@
 //TODO: whiteboard simple 4x4 matching game
 //TODO: create a 2D array (4x4) to hold the state of our board
 //TODO: populate the array with random "match game" data
-//TODO: create an array of Colors and draw the board so we can see the "goal"
+//TODO: create an array of colors and draw the board so we can see the "goal"
 //TODO: refactor int[][] into Tile(value) with new Tile -> value, isFaceUp, isFinal
 //TODO: draw face down tiles and add logic for detecting which tile has been clicked
 //TODO: add isFinal state to Tile
@@ -29,17 +29,17 @@ final int GAME_STATE = 2;
 int currentState = MENU_STATE;
 
 //HW: replace these colors with images for the cardback and an image for each tile
-Color tileBack = new Color(255,255,255);
-Color[] tileColors = {
-  new Color(255, 0, 0),
-  new Color(0, 255, 0),
-  new Color(0, 0, 255),
-  new Color(255, 255, 0),
-  new Color(255, 0, 255),
-  new Color(0, 255, 255),
-  new Color(128, 0, 0),
-  new Color(0, 128, 0),
-  new Color(0, 0, 128)
+color tileBack = color(255,255,255);
+color[] tileColors = {
+  color(255, 0, 0),
+  color(0, 255, 0),
+  color(0, 0, 255),
+  color(255, 255, 0),
+  color(255, 0, 255),
+  color(0, 255, 255),
+  color(128, 0, 0),
+  color(0, 128, 0),
+  color(0, 0, 128)
 };
 
 Tile[][] gameData;
@@ -61,9 +61,9 @@ void setup()
   startButton.y = 250;
   startButton.width = 300;
   startButton.height = 100;
-  startButton.normalFill = new Color(0,255,0);
-  startButton.overFill = new Color(0,200, 0);
-  startButton.downFill = new Color(0,100, 0);
+  startButton.normalFill = color(0,255,0);
+  startButton.overFill = color(0,200, 0);
+  startButton.downFill = color(0,100, 0);
   
   //HW: add a button to change difficulty, 
   //a variable to represent difficulty, 
@@ -118,9 +118,9 @@ void drawGameplay()
       Tile which_tile = gameData[i][j];
       if(which_tile.isFaceUp)
       {
-        tileColors[which_tile.value].apply();
+        fill(tileColors[which_tile.value]);
       }else{
-        tileBack.apply();
+        fill(tileBack);
       }
       
       rect(start_x + i*tileWidth, start_y + j*tileHeight, tileWidth, tileHeight);

@@ -8,16 +8,16 @@ class Button
   int width;
   int height;
   
-  Color upColor;
-  Color downColor;
-  Color overColor;
+  color upColor;
+  color downColor;
+  color overColor;
    
   Button()
   {
     
   }
   
-  Button(int _x, int _y, int _width, int _height, Color up, Color down, Color over)
+  Button(int _x, int _y, int _width, int _height, color up, color down, color over)
   {
     x = _x;
     y = _y;
@@ -35,13 +35,12 @@ class Button
     {
       if(isPressed)
       {
-        downColor.apply();
+        fill(downColor);
       }else{
-        overColor.apply();
+        fill(overColor);
       }
     }else{
-      upColor.apply();
-      fill(upColor.r, upColor.g, upColor.b);
+      fill(upColor);
     }
 
     rect(x,y,width,height);

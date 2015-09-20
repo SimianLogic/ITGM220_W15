@@ -7,9 +7,9 @@ class Button
   int width;
   int height;
   
-  Color normalFill = new Color(120,120,120);
-  Color overFill = new Color(80,80,80);
-  Color downFill = new Color(0, 0, 0);
+  color normalFill = color(120,120,120);
+  color overFill = color(80,80,80);
+  color downFill = color(0, 0, 0);
   
   Boolean isDown = false;
   
@@ -49,12 +49,12 @@ class Button
     {
       if(isDown)
       {
-        downFill.apply();
+        fill(downFill);
       }else{
-        overFill.apply();
+        fill(overFill);
       }
     }else{
-      normalFill.apply();
+      fill(normalFill);
     }
     
     rect(x,y,width,height);
