@@ -13,9 +13,9 @@
 //TODO: create a 2D array (4x4) to hold the state of our board
 //TODO: populate the array with random "match game" data
 //TODO: create an array of colors and draw the board so we can see the "goal"
-//TODO: refactor int[][] into Tile(value) with new Tile -> value, isFaceUp, isFinal
+//TODO: refactor int[][] into Tile(value) with new Tile -> value, isFaceUp, isFrozen
 //TODO: draw face down tiles and add logic for detecting which tile has been clicked
-//TODO: add isFinal state to Tile
+//TODO: add isFrozen state to Tile
 
 //HW BONUS: add a 2nd button to the menu that toggles the difficulty from easy to hard
 //HW BONUS: add dynamic text ot the home screen that shows the current difficulty
@@ -95,7 +95,7 @@ void drawGameplay()
       {
         for(int j = 0; j < rows; j++)
         {
-          if(!gameData[i][j].isFinal)
+          if(!gameData[i][j].isFrozen)
           {
             gameData[i][j].isFaceUp = false;
           }
@@ -160,7 +160,7 @@ void checkForMatches()
   {
     for(int j = 0; j < rows; j++)
     {
-      if(gameData[i][j].isFaceUp && !gameData[i][j].isFinal)
+      if(gameData[i][j].isFaceUp && !gameData[i][j].isFrozen)
       {
         if(selected == null)
         {
@@ -169,8 +169,8 @@ void checkForMatches()
           if(selected.value == gameData[i][j].value)
           {
             println("ITS A MATCH");
-            selected.isFinal = true;
-            gameData[i][j].isFinal = true;
+            selected.isFrozen = true;
+            gameData[i][j].isFrozen = true;
           }else{
             println("NO MATCH");
             matchCooldown = MATCH_COOLDOWN;

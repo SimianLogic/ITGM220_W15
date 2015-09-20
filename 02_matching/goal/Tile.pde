@@ -2,7 +2,7 @@ class Tile
 {
   int value = 0;
   Boolean isFaceUp = false;
-  Boolean isFinal = false;
+  Boolean isFrozen = false;
   
   Tile(int start_value)
   {
@@ -11,7 +11,7 @@ class Tile
   
   void flip()
   {
-    if(!isFinal)
+    if(!isFrozen)
     {
       isFaceUp = !isFaceUp;
     }
