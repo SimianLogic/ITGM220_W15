@@ -1,19 +1,19 @@
 //DONE: show how to load an image
 //DONE: whiteboard a button on the board
 //DONE: explain what a class means
-//DONE: make a button class (and a color class)
+//DONE: make a button class (and explain color primitive)
 //DONE: explain how game programming is mostly UI programming
 //DONE: finish off splash screen with an image and a button 
 //DONE: explain what state means, create variables for states MENU and GAME
 //DONE: explain the final keyword
 //DONE: modify mouse/drawing code apply to only one state
 //DONE: make it so pressing the start button transitions us to the gameplay state
-
 //TODO: whiteboard simple 4x4 matching game
 //TODO: create a 2D array (4x4) to hold the state of our board
 //TODO: populate the array with random "match game" data
 //TODO: create an array of colors and draw the board so we can see the "goal"
-//TODO: refactor int[][] into Tile(value) with new Tile -> value, isFaceUp, isFrozen
+//TODO: add a Tile class that can hold our tile state: value, isFaceUp, isFrozen
+//TODO: refactor int[][] into Tile(value)
 //TODO: draw face down tiles and add logic for detecting which tile has been clicked
 //TODO: add isFrozen state to Tile
 
