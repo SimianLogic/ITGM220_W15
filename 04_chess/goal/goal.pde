@@ -1,4 +1,7 @@
-//KEY CONCEPTS: ArrayList, for-each statement, Switch statement, subclass + super  
+//KEY CONCEPTS: ArrayList, for-each statement, Switch statement, subclass + super
+
+//CHESS PIECES from http://opengameart.org/content/chess-pieces
+//cleaned them up, added clear BGs, and sized them to 65x65
 
 //INTRODUCTION (Starter Code)
 //TODO: whoops! color is a Primitive. let's look at color reference and delete our Color class
@@ -18,6 +21,9 @@
 GameScreen currentScreen;
 GameScreen menuScreen;
 BoardScreen boardScreen;
+
+
+PImage king;
 
 void setup()
 {
@@ -39,12 +45,15 @@ void setup()
   
   //finally set our start
   currentScreen = menuScreen;
+  
+  king = loadImage("chess_piece_2_black_king.png");
 }
 
 
 void draw()
 {
   currentScreen.draw();
+  image(king,0,0);
 }
 
 void keyPressed()
