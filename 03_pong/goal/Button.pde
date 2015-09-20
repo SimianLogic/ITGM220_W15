@@ -2,9 +2,9 @@ class Button
 {
   Rectangle buttonRect;
   
-  Color normalFill = new Color(120,120,120);
-  Color overFill = new Color(80,80,80);
-  Color downFill = new Color(0, 0, 0);
+  color normalFill = color(120,120,120);
+  color overFill = color(80,80,80);
+  color downFill = color(0, 0, 0);
   
   Boolean isDown = false;
   
@@ -14,7 +14,7 @@ class Button
     println("BE CAREFUL USING AN EMPTY CONSTRUCTOR");
   }
   
-  Button(Rectangle rect, Color normal_fill, Color over_fill, Color down_fill)
+  Button(Rectangle rect, color normal_fill, color over_fill, color down_fill)
   {
     buttonRect = rect;
     normalFill = normal_fill;
@@ -48,12 +48,12 @@ class Button
     {
       if(isDown)
       {
-        downFill.apply();
+        buttonRect.fillColor = downFill;
       }else{
-        overFill.apply();
+        buttonRect.fillColor = overFill;
       }
     }else{
-      normalFill.apply();
+      buttonRect.fillColor = normalFill;
     }
     
     buttonRect.draw();

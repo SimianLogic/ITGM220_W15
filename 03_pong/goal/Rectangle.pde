@@ -9,12 +9,12 @@ class Rectangle
   float width; //rectangle width
   float height; //rectangle height
   
-  Color fillColor; //optional fillColor -- will only be used if this value is set
+  color fillColor;
   
   //center coordinate is different from Processing's default
   //top-left box model, but more similar how most game engines
   //treat Sprites (which we'll use next week)
-  Rectangle(float center_x, float center_y, float width, float height)
+  Rectangle(float center_x, float center_y, float width, float height, color fill)
   {
     x = center_x;
     y = center_y;
@@ -23,6 +23,8 @@ class Rectangle
     //the same name. to refer to our member variable, we use "this"
     this.width = width;
     this.height = height;
+    
+    fillColor = fill;
   }
   
   //the visual top of the rectangle (remember we're y-negative)
@@ -48,13 +50,7 @@ class Rectangle
   
   void draw()
   {
-    //if we've been given a color, apply it first! 
-    //if not, just use the current fill
-    if(fillColor != null)
-    {
-      fillColor.apply();
-    }
-    
+    fill(fillColor);
     rect(x - width/2,y - height/2,width,height);
   }
   

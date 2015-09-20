@@ -3,7 +3,7 @@
 Class 3 Cheat Sheet
 ------------------------------------------------------------------------
 * it's a good practice to make every screen its own class
-* in Java, "this" is a way for an object to refer to itself. this is handy for variables that have been "covered up"
+* in Java, "this" is a way for an object to refer to itself. this is handy for variables that have been "covered up" by local variables
 * a "run loop" is a centeral loop from which all animation/activity in a game come from
 * frameRate allows you to set the FASTEST speed that your program will run
 

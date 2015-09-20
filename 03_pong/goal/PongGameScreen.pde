@@ -22,14 +22,12 @@ class PongGameScreen
   {
     background = loadImage("pong_gameplay.png");
     
-    boardRect = new Rectangle(400,300,600,400);
+    boardRect = new Rectangle(400,300,600,400, 0);
     
-    ballRect = new Rectangle(400,300,ballSize,ballSize);
-    ballRect.fillColor = new Color(255,255,255);
+    ballRect = new Rectangle(400,300,ballSize,ballSize, color(255,255,255));
     
-    player1 = new Rectangle(120, 300, 15, 80);
-    player2 = new Rectangle(680, 300, 15, 80);
-    
+    player1 = new Rectangle(120, 300, 15, 80, color(255,255,255));
+    player2 = new Rectangle(680, 300, 15, 80, color(255,255,255));
     
   }
   

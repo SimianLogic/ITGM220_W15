@@ -9,10 +9,10 @@ class PongMenuScreen
   {
     background = loadImage("pong_mainmenu.png");
     
-    Rectangle button_rect = new Rectangle(400,300,300,100);
-    Color up_color = new Color(0,255,0);
-    Color over_color = new Color(0, 200, 0);
-    Color down_color = new Color(0, 100, 0);
+    Rectangle button_rect = new Rectangle(400,300,300,100,0);
+    color up_color = color(0,255,0);
+    color over_color = color(0, 200, 0);
+    color down_color = color(0, 100, 0);
     
     startButton = new Button(button_rect, up_color, over_color, down_color);
   }
