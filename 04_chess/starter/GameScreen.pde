@@ -1,6 +1,7 @@
 class GameScreen
 {
   PImage background;
+  
   ArrayList<Button> buttonList;
   
   GameScreen(String background)
