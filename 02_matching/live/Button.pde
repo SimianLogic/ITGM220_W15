@@ -1,6 +1,5 @@
 class Button
 {
-  
   Boolean isPressed = false;
   
   int x;

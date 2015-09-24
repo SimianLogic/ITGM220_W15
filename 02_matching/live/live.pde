@@ -32,16 +32,19 @@ final int GAMEPLAY = 2;
 
 int currentState = MENU;
 
+final int BAD_MATCH_COOLDOWN = 100;
+int cooldownTime = 0;
+
 int gridWidth = 4;
 int gridHeight = 4;
-int[][] grid = new int[gridWidth][gridHeight];
+Tile[][] grid = new Tile[gridWidth][gridHeight];
 
 int tileWidth = 100;
 int tileHeight = 100;
 int tileStartX = 400 - gridWidth*tileWidth/2;
 int tileStartY = 300 - gridHeight*tileHeight/2;
 
-color tileBack = color(255,255,255);
+color tileBack = color(200,200,200);
 color[] tileColors = {
   color(255, 0, 0),
   color(0, 255, 0),
@@ -90,6 +93,27 @@ void draw()
 
 void drawGameStuff()
 {
+  if(cooldownTime > 0)
+  {
+    cooldownTime -= 1;
+    
+    if(cooldownTime == 0)
+    {
+      for(int i = 0; i < gridWidth; i++)
+      {
+        for(int j = 0; j < gridHeight; j++)
+        {
+          if(!grid[i][j].isFinal)
+          {
+            grid[i][j].isFaceUp = false;
+          }
+        }
+      }
+    }
+  }
+  
+  
+  
   //draw game stuff
   fill(255,255,255);
   rect(0,0,800,600);
@@ -98,9 +122,14 @@ void drawGameStuff()
   {
     for(int j = 0; j < 4; j++)
     {
+      Tile tile = grid[i][j];
       
-      int grid_value = grid[i][j];
-      fill(tileColors[grid_value]);
+      if(tile.isFaceUp)
+      {
+        fill(tileColors[tile.value]);
+      }else{
+        fill(tileBack);
+      }
       
       rect(tileStartX + i*tileWidth,  //tile x value
           tileStartY + j*tileHeight,  //tile y value
@@ -113,10 +142,63 @@ void drawGameStuff()
 
 void mouseClicked()
 {
+  if(cooldownTime > 0)
+  {
+    return;
+  }
   int tile_column = floor((mouseX - tileStartX) / tileWidth);
   int tile_row = floor((mouseY - tileStartY) / tileHeight);
   
+  if(tile_column < 0 || tile_row < 0 || tile_column >= gridWidth || tile_row >= gridHeight)
+  {
+    return;
+  }
+  
+  Tile tile = grid[tile_column][tile_row];
+  tile.flip();
+  
+  checkForMatches();
+  
   println(tile_column + "," + tile_row);
+  println(grid[tile_column][tile_row].value);
+}
+
+void checkForMatches()
+{
+  Tile first_thing = null;
+  Tile second_thing = null;
+  for(int i = 0; i < gridWidth; i++)
+  {
+    for(int j = 0; j < gridHeight; j++)
+    {
+      if(grid[i][j].isFaceUp && !grid[i][j].isFinal)
+      { 
+        if(first_thing == null)
+        {
+          first_thing = grid[i][j];
+        }else if(second_thing == null){
+          second_thing = grid[i][j];
+        }else{
+          println("[ERROR ERROR ERROR] 3 Things Are FACE UP");
+        }
+      }
+    }
+  }
+  
+  if(first_thing == null || second_thing == null)
+  {
+    //do nothing
+    return;
+  }
+  
+  if(first_thing.value == second_thing.value)
+  {
+    first_thing.isFinal = true;
+    second_thing.isFinal = true;
+  }else{
+     cooldownTime = BAD_MATCH_COOLDOWN;
+  }
+  
 }
 
 void mousePressed()
@@ -135,6 +217,7 @@ void mouseReleased()
   {
     Boolean did_click_button = startButton.mouseReleased();
     
+    cooldownTime = BAD_MATCH_COOLDOWN;
     currentState = GAMEPLAY;
     setupGame();
   }else{
@@ -157,12 +240,10 @@ void setupGame()
   for(int i = 0; i < 4; i++)
   {
     for(int j = 0; j < 4; j++)
-    {
-      grid[i][j] = i + j;
-      
+    { 
       int random_thing_in_list = floor(random(possible_tiles.size()));
       int thing_we_picked = possible_tiles.remove(random_thing_in_list);
-      grid[i][j] = thing_we_picked;
+      grid[i][j] = new Tile(thing_we_picked);
     }
   }
 }
