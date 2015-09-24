@@ -9,9 +9,9 @@
 // DONE: pseudo-code homework assignments on whiteboard
 
 //HW: change the pegs to hold 5 discs
-int[] peg1 = {5,4,3,2,1};
-int[] peg2 = {0,0,0,0,0};
-int[] peg3 = {0,0,0,0,0};
+int[] peg1 = {4,3,2,1};
+int[] peg2 = {0,0,0,0};
+int[] peg3 = {0,0,0,0};
 
 //HW: make a variable to keep track of how many moves (pick up + put down) we've made
 
