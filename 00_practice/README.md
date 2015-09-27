@@ -84,13 +84,15 @@
 * create an 800x600 program that clears the screen each draw call
 * create a 2D array of booleans, 4x4
 * write a helper function to return a random true or false
-* in your setup function, assigne each value in the 4x4 grid to a random boolean value
+* in your setup function, assign each value in the 4x4 grid to a random boolean value
 * draw a 4x4 grid with white squares for true and black squares for false
 
 ###20
 * create an 800x600 program that clears the screen each draw call
 * create a 2D array of booleans, 4x4
 * write a helper function to return a random true or false
-* in your setup function, assigne each value in the 4x4 grid to a random boolean value
+* in your setup function, assign each value in the 4x4 grid to a random boolean value
 * draw a 4x4 grid with white squares for true and black squares for false
+* in each draw function, randomly flip the values of each tile to a new value
+* set the framerate low enough that it doesn't induce seizures
 
