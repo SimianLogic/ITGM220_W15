@@ -26,9 +26,9 @@ class ChessPiece extends Sprite
   
   int moveCount = 0;
   
-  BoardPoint[] moveList; //where can we move
-  BoardPoint[] openingList; //where can we move on our first turn?
-  BoardPoint[] attackList; //where can we attack?
+  BoardPoint[][] moveList; //where can we move
+  BoardPoint[][] openingList; //where can we move on our first turn?
+  BoardPoint[][] attackList; //where can we attack?
   
   ChessPiece(String piece_color, String piece_name, float center_x, float center_y, float width, float height)
   {
@@ -71,16 +71,27 @@ class ChessPiece extends Sprite
     }
   }
   
-  BoardPoint[] convertJSONToMoves(JSONArray move_list)
+  BoardPoint[][] convertJSONToMoves(JSONArray move_list)
   {
-    BoardPoint[] moves = new BoardPoint[move_list.size()];
+    //this is called a jagged array -- we know how many
+    //things are in the array but each subarray can be a different length
+    BoardPoint[][] moves = new BoardPoint[move_list.size()][];
     for(int i = 0; i < move_list.size(); i++)
     {
-      JSONArray move = move_list.getJSONArray(i);
-      int x = move.getInt(0);
-      int y = move.getInt(1);
+      //move is an array of [x,y] points
+      JSONArray big_move = move_list.getJSONArray(i);
+      BoardPoint[] single_move = new BoardPoint[big_move.size()];
       
-      moves[i] = new BoardPoint(x,y);
+      for(int j = 0; j < big_move.size(); j++)
+      {
+        JSONArray move = big_move.getJSONArray(j);
+        int x = move.getInt(0);
+        int y = move.getInt(1);
+      
+        single_move[j] = new BoardPoint(x,y);
+      }
+      
+      moves[i] = single_move;
     }
     
     return moves;
@@ -88,7 +99,7 @@ class ChessPiece extends Sprite
   
   //returns an array of valid moves without taking into account other pieces
   //or the board edge
-  BoardPoint[] getMoves()
+  BoardPoint[][] getMoves()
   {
     if(moveCount == 0 && openingList != null)
     {
@@ -98,7 +109,7 @@ class ChessPiece extends Sprite
     return localMove(moveList);
   }
   
-  BoardPoint[] getAttacks()
+  BoardPoint[][] getAttacks()
   {
     if(attackList != null)
     {
@@ -110,18 +121,24 @@ class ChessPiece extends Sprite
     return localMove(moveList);
   }
   
-  BoardPoint[] localMove(BoardPoint[] canonical_moves)
+  BoardPoint[][] localMove(BoardPoint[][] canonical_moves)
   {
-    BoardPoint[] local = new BoardPoint[canonical_moves.length];
+    BoardPoint[][] local = new BoardPoint[canonical_moves.length][];
     
     for(int i = 0; i < canonical_moves.length; i++)
     {
-      int y_offset = canonical_moves[i].y;
-      if(team.equals(TEAM_WHITE))
+      BoardPoint[] single_move = canonical_moves[i];
+      BoardPoint[] local_move = new BoardPoint[single_move.length];
+      for(int j = 0; j < single_move.length; j++)
       {
-        y_offset = -y_offset;
+        int y_offset = single_move[j].y;
+        if(team.equals(TEAM_WHITE))
+        {
+          y_offset = -y_offset;
+        }
+        local_move[j] = position.offset(single_move[j].x,y_offset);
       }
-      local[i] = position.offset(canonical_moves[i].x,y_offset);
+      local[i] = local_move;
     }
     
     return local;

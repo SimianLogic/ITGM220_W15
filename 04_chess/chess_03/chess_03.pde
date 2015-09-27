@@ -5,6 +5,9 @@
 
 //CHESS 03
 //Moved json to "content" folder and added one to describe moves
+//Loaded ChessPiece move data from disc using loadJSONObject
+//Split getMoves into getMoves and getAttacks in case they're not the same
+//
 
 
 

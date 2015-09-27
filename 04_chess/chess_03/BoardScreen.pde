@@ -154,59 +154,74 @@ class BoardScreen extends GameScreen
       return;
     }
     
-    BoardPoint[] possible_moves = selectedPiece.getMoves();
+    BoardPoint[][] possible_moves = selectedPiece.getMoves();
     
     for(int i = 0; i < possible_moves.length; i++)
     {
-      //if the possible_move is out of bounds, it's a bad move!
-      if(possible_moves[i].x < 0) continue;
-      if(possible_moves[i].y < 0) continue;
-      if(possible_moves[i].x >= COLUMNS) continue;
-      if(possible_moves[i].y >= ROWS) continue;
-      
-      //see if there's anyone in the spot already
-      ChessPiece current_piece = pieceForBoardPoint(possible_moves[i]);
-      
-      //1 valid MOVE (just move) type:
-      //there is NOTHING in the spot we want to move to
-      if(current_piece == null)
+      for(int j = 0; j < possible_moves[i].length; j++)
       {
-        println("VALID MOVE: " + possible_moves[i].x + "," + possible_moves[i].y);
+        //if the possible_move is out of bounds, it's a bad move!
+        if(possible_moves[i][j].x < 0) continue;
+        if(possible_moves[i][j].y < 0) continue;
+        if(possible_moves[i][j].x >= COLUMNS) continue;
+        if(possible_moves[i][j].y >= ROWS) continue;
         
-        //add it to our valid moves!
-        Rectangle valid_move = selectedRect.copyWithColor(color(0,255,0));
-        valid_move.x = startX + possible_moves[i].x*tileWidth;
-        valid_move.y = startY + possible_moves[i].y*tileHeight;
-        
-        validMoves.add(valid_move);
+        //see if there's anyone in the spot already
+        ChessPiece current_piece = pieceForBoardPoint(possible_moves[i][j]);
+        //1 valid MOVE (just move) type:
+        //there is NOTHING in the spot we want to move to
+        if(current_piece == null)
+        {
+          println("VALID MOVE: " + possible_moves[i][j].x + "," + possible_moves[i][j].y);
+          
+          //add it to our valid moves!
+          Rectangle valid_move = selectedRect.copyWithColor(color(0,255,0));
+          valid_move.x = startX + possible_moves[i][j].x*tileWidth;
+          valid_move.y = startY + possible_moves[i][j].y*tileHeight;
+          
+          validMoves.add(valid_move);
+        }else{
+          //break out of this current loop! Chess doesn't allow us to jump over,
+          //so any moves further down this path are invalid
+          break;
+        }
       }
     }
     
     //now do the same thing for ATTACKS
-    BoardPoint[] possible_attacks = selectedPiece.getAttacks();
+    BoardPoint[][] possible_attacks = selectedPiece.getAttacks();
     for(int i = 0; i < possible_attacks.length; i++)
     {
-      //if the possible_move is out of bounds, it's a bad move!
-      if(possible_attacks[i].x < 0) continue;
-      if(possible_attacks[i].y < 0) continue;
-      if(possible_attacks[i].x >= COLUMNS) continue;
-      if(possible_attacks[i].y >= ROWS) continue;
-      
-      //see if there's anyone in the spot already
-      ChessPiece current_piece = pieceForBoardPoint(possible_attacks[i]);
-      
-      //1 valid ATTACK (just attack) type:
-      //there is a piece in the spot and it is on a different team
-      if(current_piece != null && !current_piece.team.equals(selectedPiece.team))
+      for(int j = 0; j < possible_attacks[i].length; j++)
       {
-        println("VALID MOVE: " + possible_attacks[i].x + "," + possible_attacks[i].y);
+        //if the possible_move is out of bounds, it's a bad move!
+        if(possible_attacks[i][j].x < 0) continue;
+        if(possible_attacks[i][j].y < 0) continue;
+        if(possible_attacks[i][j].x >= COLUMNS) continue;
+        if(possible_attacks[i][j].y >= ROWS) continue;
         
-        //add it to our valid moves!
-        Rectangle valid_move = selectedRect.copyWithColor(color(255,0,0));
-        valid_move.x = startX + possible_attacks[i].x*tileWidth;
-        valid_move.y = startY + possible_attacks[i].y*tileHeight;
+        //see if there's anyone in the spot already
+        ChessPiece current_piece = pieceForBoardPoint(possible_attacks[i][j]);
         
-        validMoves.add(valid_move);
+        //1 valid ATTACK (just attack) type:
+        //there is a piece in the spot and it is on a different team
+        if(current_piece != null )
+        {
+          if(!current_piece.team.equals(selectedPiece.team))
+          {
+            println("VALID MOVE: " + possible_attacks[i][j].x + "," + possible_attacks[i][j].y);
+            
+            //add it to our valid moves!
+            Rectangle valid_move = selectedRect.copyWithColor(color(255,0,0));
+            valid_move.x = startX + possible_attacks[i][j].x*tileWidth;
+            valid_move.y = startY + possible_attacks[i][j].y*tileHeight;
+            
+            validMoves.add(valid_move);
+          }
+          
+          //once we hit the first piece (ours or not), don't continue the sequence
+          break;
+        }
       }
     }
   }
