@@ -8,6 +8,7 @@ Class 4 Cheat Sheet
   * a value can be an array,object,string,float,boolean, or null
 * in most engines/frameworks, a sprite is an onscreen graphic
 * if you can figure out a way to segment your game data from your game logic, loading your data at runtime is extremly useful
+* a for-each statement is a way to iterate a list of known object type where you don't need to know the order
 
 
 Class 4 Homework
