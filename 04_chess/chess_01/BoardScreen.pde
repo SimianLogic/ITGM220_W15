@@ -2,9 +2,9 @@ class BoardScreen extends GameScreen
 {
   Rectangle[][] board;
   
-  
-  int rows = 8;
-  int columns = 8;
+  //a standard chess board is 8x8
+  final int ROWS = 8;
+  final int COLUMNS = 8;
     
   //will be assigned in the constructor
   float tileWidth;
@@ -29,16 +29,16 @@ class BoardScreen extends GameScreen
     float board_height = 500;
     
     
-    tileWidth = board_width / rows;
-    tileHeight = board_height / rows;
+    tileWidth = board_width / ROWS;
+    tileHeight = board_height / ROWS;
     
     float start_x = 400 - board_width/2 + tileWidth/2;
     float start_y = 300 - board_height/2 + tileHeight/2;
     
-    board = new Rectangle[columns][rows];
-    for(int i = 0; i < columns; i++)
+    board = new Rectangle[COLUMNS][ROWS];
+    for(int i = 0; i < COLUMNS; i++)
     {
-      for(int j = 0; j < rows; j++)
+      for(int j = 0; j < ROWS; j++)
       {
         Rectangle tile;
         if(i%2 == j%2)
@@ -58,9 +58,9 @@ class BoardScreen extends GameScreen
   {
     super.draw();
     
-    for(int i = 0; i < columns; i++)
+    for(int i = 0; i < COLUMNS; i++)
     {
-      for(int j = 0; j < rows; j++)
+      for(int j = 0; j < ROWS; j++)
       {
         board[i][j].draw();
       }
@@ -69,9 +69,9 @@ class BoardScreen extends GameScreen
   
   void mouseClicked()
   {
-    for(int i = 0; i < columns; i++)
+    for(int i = 0; i < COLUMNS; i++)
     {
-      for(int j = 0; j < rows; j++)
+      for(int j = 0; j < ROWS; j++)
       {
         if(board[i][j].containsPoint(mouseX,mouseY))
         {

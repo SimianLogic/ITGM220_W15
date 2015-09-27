@@ -1,12 +1,18 @@
+//a helper class for making a UI screen
 class GameScreen
 {
+  //we assume that every screen will have a background image
   PImage background;
   
+  //we assume that every screen will have buttons
   ArrayList<Button> buttonList;
   
+  //to create a GameScreen, call 
+  //new GameScreen("your_image.png");
   GameScreen(String background)
   {
     this.background = loadImage(background);
+    
     buttonList = new ArrayList<Button>();
   }
   
@@ -21,8 +27,16 @@ class GameScreen
     {
       button.draw();
     }
+    
+    //the code is the same as this regular for loop
+    //for(int i = 0; i < buttonList.size(); i++)
+    //{
+    //  buttonList.get(i).draw();
+    //}
   }
   
+  //most of these are empty methods, but
+  //we want all GameScreens to be able to handle input
   void keyPressed()
   {
   }
@@ -45,6 +59,8 @@ class GameScreen
   
   String mouseReleased()
   {
+    //return the name of the button so our Controller (or run loop)
+    //can respond to this input
     for(Button button : buttonList) 
     {
       if(button.mouseReleased())

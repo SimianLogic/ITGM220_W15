@@ -9,7 +9,7 @@ class Rectangle
   float width; //rectangle width
   float height; //rectangle height
   
-  color fillColor; //optional fillColor -- will only be used if this value is set
+  color fillColor;
   
   Rectangle(float center_x, float center_y, float width, float height, color fill)
   {

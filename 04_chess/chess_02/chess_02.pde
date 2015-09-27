@@ -3,19 +3,15 @@
 //CHESS PIECES from http://opengameart.org/content/chess-pieces
 //cleaned them up, added clear BGs, and sized them to 65x65
 
-//INTRODUCTION (Starter Code)
-//TODO: whoops! color is a Primitive. let's look at color reference and delete our Color class
-//TODO: show refactored Rectangle class
-//TODO: show refactored Button class that takes 3 Rects
-//TODO: show refactored GameScreen and explain how it comes from MatchGame and MatchMenu
-//TODO: explain what an ArrayList is. explain what a for-each loop is (cannot modify)
-//TODO: explain how we switched from STATE as an int to STATE as a GameScreen
-//TODO: explain what a Switch statment is. Break; Fall-through
-//TODO: explain what a subclass is. show BoardScreen's constructor
-//TODO: explain the difference between "generic" use of a class and subclass
-//TODO: show grid of Rectangles on the board with mouse input
-
-//LIVE DEMO
+//CHESS 02
+//Show the Sprite class -- it's just a Rectangle with a PImage!
+//Show how our new Button class is built on Rectangles -- but doesn't care what kind (as long as it can draw)
+//Show the Game Piece class
+//explain what JSON is -- Arrays, Ints, Floats, Strings, OBJECTS/MAPS/HASHES
+//show how we can load JSON from the file system and operate on the values
+//explain the SPLIT method
+//explain BoardPoint and show that a piece returns valid moves
+//walk through the BoardScreen mouseClicked logic
 
 
 GameScreen currentScreen;
@@ -29,13 +25,17 @@ void setup()
 {
   size(800,600);
   //MenuScreen is a generic GameScreen, so we assign properties to it
-  menuScreen = new GameScreen("chess_menu.png");
+  menuScreen = new GameScreen("ui/chess_menu.png");
   
-  Rectangle start_rect = new Rectangle(400,300,300,100, color(0,255,0));
+  
+  Sprite start_up = new Sprite("ui/start_up.png",400,300,300,100);
+  Sprite start_over = new Sprite("ui/start_over.png",400,300,300,100);
+  Sprite start_down = new Sprite("ui/start_down.png",400,300,300,100);
+  
   Button start_button = new Button("menu_start_game", 
-    start_rect, 
-    start_rect.copyWithColor(color(0,200,0)), 
-    start_rect.copyWithColor(color(0,100,0))
+    start_up, 
+    start_over, 
+    start_down
   );
   menuScreen.buttonList.add(start_button);
   

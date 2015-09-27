@@ -1,25 +1,25 @@
 //KEY CONCEPTS: ArrayList, for-each statement, Switch statement, subclass + super
 
 //CHESS PIECES from http://opengameart.org/content/chess-pieces
-//cleaned them up, added clear BGs, and sized them to 65x65
+//cleaned them up, added clear BGs/glow, and sized them to 65x65
 
-//INTRODUCTION (Starter Code)
-//TODO: whoops! color is a Primitive. let's look at color reference and delete our Color class
-//TODO: show refactored Rectangle class
-//TODO: show refactored Button class that takes 3 Rects
+//CHESS 01 
+//TODO: show refactored Button class that takes 3 Rects and has a name
 //TODO: show refactored GameScreen and explain how it comes from MatchGame and MatchMenu
-//TODO: explain what an ArrayList is. explain what a for-each loop is (cannot modify)
+//TODO: explain what an ArrayList is. explain what a for-each loop is (gotcha:cannot modify)
 //TODO: explain how we switched from STATE as an int to STATE as a GameScreen
 //TODO: explain what a Switch statment is. Break; Fall-through
 //TODO: explain what a subclass is. show BoardScreen's constructor
-//TODO: explain the difference between "generic" use of a class and subclass
-//TODO: show grid of Rectangles on the board with mouse input
-
-//LIVE DEMO
+//TODO: explain the difference between "generic" use of a class and subclass (menuScreen vs BoardScreen)
+//TODO: lay out starting menu/board -- rectangles with tile input
 
 
+//variable to hold our currently active screen
 GameScreen currentScreen;
+
+//our menu 
 GameScreen menuScreen;
+//our play screen
 BoardScreen boardScreen;
 
 

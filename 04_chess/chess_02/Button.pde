@@ -1,5 +1,7 @@
 class Button
 {
+  //the name of this button, so we can differentiate it from other buttons
+  //and respond to its input
   String name;
   
   Rectangle normalRect;
