@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<actionScriptProperties analytics="false" mainApplicationPath="Flash_16.as" projectUUID="bd7cb07e-2cd6-4962-8ca6-967e25a2a133" version="10">
-  <compiler additionalCompilerArguments="-locale en_US" autoRSLOrdering="true" copyDependentFiles="true" fteInMXComponents="false" generateAccessible="true" htmlExpressInstall="true" htmlGenerate="false" htmlHistoryManagement="true" htmlPlayerVersionCheck="true" includeNetmonSwc="false" outputFolderPath="bin-debug" removeUnusedRSL="true" sourceFolderPath="src" strict="true" targetPlayerVersion="0.0.0" useApolloConfig="false" useDebugRSLSwfs="true" verifyDigests="true" warn="true">
+<actionScriptProperties analytics="false" mainApplicationPath="Flash_20.as" projectUUID="bd7cb07e-2cd6-4962-8ca6-967e25a2a133" version="11">
+  <compiler additionalCompilerArguments="-locale en_US" advancedTelemetry="false" autoRSLOrdering="true" copyDependentFiles="true" fteInMXComponents="false" generateAccessible="true" htmlExpressInstall="true" htmlGenerate="false" htmlHistoryManagement="true" htmlPlayerVersionCheck="true" includeNetmonSwc="false" outputFolderPath="bin-debug" removeUnusedRSL="true" sourceFolderPath="src" strict="true" targetPlayerVersion="0.0.0" useApolloConfig="false" useDebugRSLSwfs="true" useFlashSDK="true" verifyDigests="true" warn="true">
     <compilerSourcePath/>
     <libraryPath defaultLinkType="0">
       <libraryPathEntry kind="4" path="">
@@ -32,26 +32,30 @@
     <sourceAttachmentPath/>
   </compiler>
   <applications>
-    <application path="Flash_16.as"/>
-    <application path="Flash_15.as"/>
-    <application path="Flash_14_Sprite.as"/>
-    <application path="Flash_14.as"/>
-    <application path="Flash_13.as"/>
-    <application path="Flash_12.as"/>
-    <application path="Flash_11.as"/>
-    <application path="Flash_10.as"/>
+    <application path="Flash_19.as"/>
     <application path="Flash_09.as"/>
-    <application path="Flash_08.as"/>
-    <application path="Flash_07.as"/>
-    <application path="Flash_06.as"/>
-    <application path="Flash_05.as"/>
     <application path="Flash_04.as"/>
-    <application path="Flash_03.as"/>
-    <application path="Flash_02.as"/>
+    <application path="Flash_15.as"/>
+    <application path="Flash_08.as"/>
+    <application path="Flash_10.as"/>
+    <application path="Flash_20.as"/>
+    <application path="Flash_11.as"/>
+    <application path="Flash_14.as"/>
+    <application path="Flash_14_Sprite.as"/>
+    <application path="Flash_12.as"/>
     <application path="Flash_01.as"/>
-    <application path="FlashExamples.as"/>
+    <application path="Flash_03.as"/>
+    <application path="Flash_05.as"/>
+    <application path="Flash_06.as"/>
+    <application path="Flash_02.as"/>
+    <application path="Flash_07.as"/>
+    <application path="Flash_18.as"/>
+    <application path="Flash_17.as"/>
+    <application path="Flash_13.as"/>
+    <application path="Flash_16.as"/>
   </applications>
   <modules/>
+  <workers/>
   <buildCSSFiles/>
   <flashCatalyst validateFlashCatalystCompatibility="false"/>
 </actionScriptProperties>

@@ -7,8 +7,8 @@ package
 	[SWF(width="800",height="600", backgroundColor="#999999")]
 	public class Flash_16 extends Sprite
 	{
-		var minX:Number = 300;
-		var maxX:Number = 500;
+		public var minX:Number = 300;
+		public var maxX:Number = 500;
 		
 		public function Flash_16()
 		{
