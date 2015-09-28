@@ -1,7 +1,10 @@
 package
 {
-	import flash.display.*;
-	import flash.events.*;
+	import flash.display.Loader;
+	import flash.display.SimpleButton;
+	import flash.display.Sprite;
+	import flash.events.Event;
+	import flash.events.MouseEvent;
 	import flash.net.URLRequest;
 
   //we need the events package to hook into the enterFrame event
@@ -24,6 +27,9 @@ package
 		{
 			super();
 			
+			//start this data load at startup, we need it to be loaded before we make our chess pieces!
+			ChessPiece.loadMoveData();
+			
 			menuScreen = new GameScreen("ui/chess_menu.png");
 			addChild(menuScreen);
 			
@@ -43,14 +49,22 @@ package
 			
 			button.addEventListener(MouseEvent.CLICK, handleStart);
 			
-			
-			boardScreen = new BoardScreen();
-			boardScreen.addEventListener("gameplay_exit", handleExit);
 		}
 		
 		public function handleStart(event:MouseEvent):void
 		{
-			trace("START");
+			if(!ChessPiece.dataIsLoaded)
+			{
+				trace("NO DATA YET");
+				return;
+			}
+			//we defer initialization to until they press the button so our data has time to load
+			if(boardScreen == null)
+			{
+				boardScreen = new BoardScreen();
+				boardScreen.addEventListener("gameplay_exit", handleExit);
+			}
+						
 			addChild(boardScreen);
 			removeChild(menuScreen);
 		}
