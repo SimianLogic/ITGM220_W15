@@ -1,0 +1,7 @@
+{
+    "name":"Intro to Game Programming",
+    "students":["Sally","Bob","Mark","Jessica"],
+    "year":2015,
+    "course_length":2.5,
+    "status":null
+}
