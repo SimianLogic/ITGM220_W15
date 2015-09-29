@@ -26,6 +26,7 @@ class ChessPiece extends Sprite
   
   ChessPiece(String piece_color, String piece_name, float center_x, float center_y, float width, float height)
   {
+    //equivalent to calling new Sprite("pieces/white_rook.png",x,y,w,h);
     super("pieces/" + piece_color + "_" + piece_name + ".png", center_x, center_y, width, height);
     
     team = piece_color;
