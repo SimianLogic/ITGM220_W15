@@ -22,7 +22,6 @@ package
 		//can hook into the events it needs with EventListeners
 //		public var currentScreen:GameScreen;
 		
-		
 		public function FlashChess()
 		{
 			super();

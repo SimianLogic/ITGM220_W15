@@ -84,7 +84,6 @@ class BoardScreen extends GameScreen
       for(int j = 0; j < row.size(); j++)
       {
         String piece = row.getString(j);
-        println(piece);
         if(piece.equals("empty"))
         {
           //nothing to see here
@@ -155,9 +154,11 @@ class BoardScreen extends GameScreen
     }
     
     BoardPoint[][] possible_moves = selectedPiece.getMoves();
-    
+  
+    //go through each move
     for(int i = 0; i < possible_moves.length; i++)
     {
+      //go through each coordinate in the move
       for(int j = 0; j < possible_moves[i].length; j++)
       {
         //if the possible_move is out of bounds, it's a bad move!
@@ -190,8 +191,10 @@ class BoardScreen extends GameScreen
     
     //now do the same thing for ATTACKS
     BoardPoint[][] possible_attacks = selectedPiece.getAttacks();
+    //go through every possible attack
     for(int i = 0; i < possible_attacks.length; i++)
     {
+      //go through every possible coordinate in each attack
       for(int j = 0; j < possible_attacks[i].length; j++)
       {
         //if the possible_move is out of bounds, it's a bad move!
