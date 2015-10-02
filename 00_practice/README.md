@@ -100,9 +100,9 @@
 
 ###21
 * declare a constant int with a value of 10
-* declare an IntArray
-* write a for-loop that iterates from 0 to your constant and populates your IntArray
-* print the IntArray to the console
+* declare an IntList
+* write a for-loop that iterates from 0 to your constant and populates your IntList
+* print the IntList to the console
 * change the 5th item in the array to a value of 25
 * print IntAarray to the console
 

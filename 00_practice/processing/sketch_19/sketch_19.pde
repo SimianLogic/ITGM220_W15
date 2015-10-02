@@ -1,14 +1,16 @@
-boolean[][] tiles;
+boolean[][] tiles = new boolean[4][4];
 
 void setup()
 {
    size(800,600);
    
-   tiles = new boolean[4][4];
+   //go through each top level array
    for(int i = 0; i < 4; i++)
    {
+     //go through each item in each array
      for(int j = 0; j < 4; j++)
      {
+       //assign a random boolean
        tiles[i][j] = getRandomBoolean();
      }
    }

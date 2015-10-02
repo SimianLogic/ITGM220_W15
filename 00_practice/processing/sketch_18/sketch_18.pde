@@ -15,11 +15,8 @@ void draw()
   rect(0,0,800,600);
   
   //if we've ever clicked, our value will be > 0
-  if(startDragX > 0)
-  {
-    fill(255,255,255);
-    ellipse(startDragX,startDragY,radius*2,radius*2);
-  }
+  fill(255,255,255);
+  ellipse(startDragX,startDragY,radius,radius);
   
   if(isDragging)
   {
