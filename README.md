@@ -59,95 +59,102 @@ Studio Time to work through Examples & First 4 Homeworks
 ##4:1
 HOMEWORK 1 (Towers of Hanoi) & 2 (Matching) DUE
 
-Processing Examples
-Game 5: Chess (in Flash)
 Flash is Dead. But what is it? 
 * Display tree
 * UI authoring
 * Intro to Flash Builder
 * MouseInput in Flash
 
-PROJECT 1 ASSIGNED
+Flash Examplse
 
 ##4:2
-Finish Processing Examples
-Studio time -- make sure everyone has Flash set up and can run through Flash examples.
+No more Chess! Homework 4 = one extra week. Do Chess if you're brave... or Match-3! In Flash OR Processing.
+
+* More gamestate.
+* More image rendering.
+* Basic animation.
+
+Let's de-construct a Processing Match-3 game and build a code map.
+Then let's re-assemble it "the flash way."
+
+Assign Project 1
 
 ##5:1
-HOMEWORK 3 (Pong) & 4 (Chess) DUE
-Flash Examples
+HOMEWORK 3 (Pong) DUE
 
-Game 6: Match-3 (in Flash)
-ASSIGN HOMEWORK 5
+Finish up Match-3 -> Flash port.
 
 ##5:2
-Studio time! Help with Project 1 & Homework 5.
+Studio time! Help with Project 1 & Homework 4 (Match3/Chess)
 
 ##6:1
+HOMEWORK 4 DUE (Match-3 in Flash/Processing or Chess in Processing)
 PROJECT 1 DUE
-Introduce Unity
 
-Game 7: ShuffleGolf
+Introduce Unity & C#
+Unity exercises.
 
 * C#. 
-* Texture atlases. 
 * Using a physics engine. 
 * Concept of a 2D "camera."
 
-ASSIGN HOMEWORK 6.
 ASSIGN PROJECT 2: MAKE A GAME (ANY GAME, ANY TECH)
 Present ideas on a scale from easy->harder. Easy doesn't mean worse grade.
 Must have at least 3 screens. Must get idea approved.
 
 ##6:2
-Unity exercises.
+Deconstruct ShuffleGolf.
+ASSIGN HOMEWORK 5 (ShuffleGolf).
 
 Project 2 initial ideas due (not graded).
 
-Studio time -- help out with Unity setup, Project 1, Homework 5/6. Whiteboarding project 2 ideas.
+Studio time -- help out with Unity setup, Project 1, Homework 5. Whiteboarding project 2 ideas.
 
 
 ##7:1 
-HOMEWORK 5/6 DUE
-
 Game 8: Endless Runner (Unity)
+* Deconstruct the gameplay.
 * Obstacles/gameplay. 
 * Character animation. 
 
-ASSIGN HOMEWORK 7
+ASSIGN HOMEWORK 6 (Endless Runner)
 
 ##7:2
-Studio time -- help out with homework 7 and Project 2.
+Studio time -- help out with homework 5/6 and Project 2.
 Project 2 ideas must be approved by the end of this class.
 
 ##8:1
+HOMEWORK 5 DUE
+
 Scripting! What is it good for? Let's learn ruby.
 Text and image manipulation demos.
 
-ASSIGN HOMEWORK 8
+ASSIGN HOMEWORK 7 (fun Ruby exercises)
 
-Studio time for homework 7/8 and Project 2.
+Studio time for homework 6 (Endless Runner)/7 (Ruby exercises) and Project 2.
 
 
 ##8:2
 Javascript + photoshop scripting. Real world examples.
 
-ASSIGN HOMEWORK 9
+ASSIGN HOMEWORK 8 (PhotoShop Script)
 
-Studio time for homework 7/8/9 and Project 2
+Studio time for homework 6 (Endless Runner)/7 (fun Ruby Exercises)/8 (Photoshop script) and Project 2
 
 
 ##9:1
+HOMEWORK 6 DUE
+
 Walk through Will's Ludum Dare projects and how they're built (3 are Flash, 3 are Unity)
-Studio time for homework 9/10 and Project 2
+Studio time for homework 7/8 and Project 2
 
 ##9:2
 Walk through Dragon Army games -- show real-life examples of architecture and pipeline (using everything we've learned in class).
 
-Studio time for homework 7/8/9 and Project 2
+Studio time for homework 7/8 and Project 2
 
 ##10:1
-Homework 7/8/9 due. 
+Homework 7/8 due. 
 
 Help with Project 2.
 
