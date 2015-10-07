@@ -69,27 +69,28 @@ Flash Examplse
 
 ##4:2
 No more Chess! Homework 4 = one extra week. Do Chess if you're brave... or Match-3! In Flash OR Processing.
+* Framework deep dive. 
+* Let's de-construct a finished Match-3 game in Processing.
+* Walk through the steps necessary to construct that Match-3 game.
+* Help with Pong if there's time.
 
-* More gamestate.
-* More image rendering.
-* Basic animation.
-
-Let's de-construct a Processing Match-3 game and build a code map.
-Then let's re-assemble it "the flash way."
-
-Assign Project 1
 
 ##5:1
 HOMEWORK 3 (Pong) DUE
 
-Finish up Match-3 -> Flash port.
+* Port Processing Match-3 to Flash
+
+ASSIGN PROJECT 1: PORT ONE OF THE 3 STARTER GAMES TO FLASH -- DUE 7:1 @ EOD
+YOUR "PORT" MUST HAVE:
+  3 screens -- Menu, Gameplay, Game Over
+  at least 1 button
+  at least 1 image loaded from disk
 
 ##5:2
-Studio time! Help with Project 1 & Homework 4 (Match3/Chess)
+Studio time! Help with Project 1 (Flash Port) & Homework 4 (Match3/Chess)
 
 ##6:1
 HOMEWORK 4 DUE (Match-3 in Flash/Processing or Chess in Processing)
-PROJECT 1 DUE
 
 Introduce Unity & C#
 Unity exercises.
@@ -98,13 +99,12 @@ Unity exercises.
 * Using a physics engine. 
 * Concept of a 2D "camera."
 
-ASSIGN PROJECT 2: MAKE A GAME (ANY GAME, ANY TECH)
+ASSIGN PROJECT 2: MAKE A GAME (ANY GAME, ANY TECH)  -- DUE ON FINAL CLASS
 Present ideas on a scale from easy->harder. Easy doesn't mean worse grade.
 Must have at least 3 screens. Must get idea approved.
 
 ##6:2
-Deconstruct ShuffleGolf.
-ASSIGN HOMEWORK 5 (ShuffleGolf).
+
 
 Project 2 initial ideas due (not graded).
 
@@ -112,6 +112,8 @@ Studio time -- help out with Unity setup, Project 1, Homework 5. Whiteboarding p
 
 
 ##7:1 
+PROJECT 1 DUE
+
 Game 8: Endless Runner (Unity)
 * Deconstruct the gameplay.
 * Obstacles/gameplay. 
@@ -145,7 +147,7 @@ Studio time for homework 6 (Endless Runner)/7 (fun Ruby Exercises)/8 (Photoshop 
 ##9:1
 HOMEWORK 6 DUE
 
-Walk through Will's Ludum Dare projects and how they're built (3 are Flash, 3 are Unity)
+Walk through Prof H's Ludum Dare projects and how they're built (3 are Flash, 3 are Unity)
 Studio time for homework 7/8 and Project 2
 
 ##9:2
