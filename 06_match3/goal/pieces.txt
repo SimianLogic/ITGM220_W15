@@ -1,4 +1,0 @@
-[
-    {"name" : "white_pawn"},
-    {"name" : "black_pawn"}
-]
