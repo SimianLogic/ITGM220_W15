@@ -1,10 +1,10 @@
-
+#Professor H's Guide to Knowing Enough to Be Dangerous
 * What is a variable?
 * What is the difference between a primitive and an object?
 * What is an array? How do you declare an array of ints?
 * What does immutable mean? What does mutable mean?
-* Name one immutable data type in Processing.
-* Name one mutable data type in Processing.
+* Name one immutable data type in Processing/Flash/Unity.
+* Name one mutable data type in Processing/Flash/Unity.
 * Gie an example of why would you use one and not the other.
 * What is a function?
 * What's the difference between a void function and a non-void function?
