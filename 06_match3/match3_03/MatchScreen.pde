@@ -3,11 +3,15 @@
 class MatchScreen extends GameScreen
 {
   
+  ArrayList<Button> gemList;
+  
   int score = 0;
   
   MatchScreen()
   {
     super();
+    
+    gemList = new ArrayList<Button>();
     
     Sprite background = new Sprite("web_images/background.png", 320, 480);
     spriteList.add(background);
@@ -27,14 +31,14 @@ class MatchScreen extends GameScreen
     //add our tiled background   (Confession: real world Prof would just bake these into the background image)
     
     //magic numbers -- just guess & checked these
-    int tile_width = 115;
-    int tile_height = 115;
+    float tile_width = 115;
+    float tile_height = 115;
     
     //use arithmetic to center all this
-    int total_width = 5*tile_width;
-    int start_x = (640 - total_width)/2 + tile_width/2;
+    float total_width = 5*tile_width;
+    float start_x = (640 - total_width)/2 + tile_width/2;
     
-    int start_y = 220; 
+    float start_y = 220; 
     
     for(int i = 0; i < 5; i++)
     {
@@ -62,7 +66,7 @@ class MatchScreen extends GameScreen
          Sprite gem_up = new Sprite("web_images/jewel" + which_gem + ".png", start_x + i*tile_width, start_y+j*tile_width, 105, 105);
          Sprite gem_down = new Sprite("web_images/jewel" + which_gem + ".png", start_x + i*tile_width, start_y+j*tile_width, 90, 90);
          Button gem_button = new Button(i + "_" + j, gem_normal, gem_up, gem_down);
-         buttonList.add(gem_button);
+         gemList.add(gem_button);
          
       }
     }
@@ -73,6 +77,11 @@ class MatchScreen extends GameScreen
     //if we dont' call this, none of our buttonList or spriteList will draw...
     super.draw();
     
+    for(Button gem : gemList)
+    {
+      gem.draw();
+    }
+    
     textSize(40);
     textAlign(CENTER);
     
@@ -81,30 +90,49 @@ class MatchScreen extends GameScreen
     text("" + score, 170, 100);
   }
   
+  void mousePressed()
+  {
+    for(Button gem : gemList)
+    {
+      gem.mousePressed();
+    }
+    
+  }
+  
   Button mouseReleased()
   {
     Button return_button = super.mouseReleased();
     
-    if(return_button == null)
+    if(return_button != null)
     {
-      return null;
-    }else if(return_button.name == "scale_button"){
       return return_button;
-    }else{
-      
-      //WE KNOW A JEWEL WAS CLICKED
-      
-      //take our clicked jewel out of the buttonList, which will "kill it"
+    }
+    
+    Button clicked_gem = null;    
+    for(Button gem : gemList)
+    {
+      if(gem.mouseReleased())
+      {
+        clicked_gem = gem;
+      }
+    }
+    
+    if(clicked_gem != null)
+    {
+      //WE KNOW A GEM WAS CLICKED
+    
+      //take our clicked gem out of the buttonList, which will "kill it"
       // (it will no longer get events or draw calls
-      buttonList.remove(return_button);
+      gemList.remove(clicked_gem);
       
-      String[] coordinates = return_button.name.split("_");
+      String[] coordinates = clicked_gem.name.split("_");
       int x = parseInt(coordinates[0]);
       int y = parseInt(coordinates[1]);
       
-      println("KILLED JEWEL AT " + x + "," + y);
-      
+      println("KILLED GEM AT " + x + "," + y);
     }
+    
+
     return null;
   }
 
