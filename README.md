@@ -105,7 +105,6 @@ Must have at least 3 screens. Must get idea approved.
 
 ##6:2
 
-
 Project 2 initial ideas due (not graded).
 
 Studio time -- help out with Unity setup, Project 1, Homework 5. Whiteboarding project 2 ideas.
@@ -128,35 +127,31 @@ Project 2 ideas must be approved by the end of this class.
 ##8:1
 HOMEWORK 5 DUE
 
-Scripting! What is it good for? Let's learn ruby.
-Text and image manipulation demos.
+Javascript + photoshop scripting. Real world examples.
 
-ASSIGN HOMEWORK 7 (fun Ruby exercises)
+ASSIGN HOMEWORK 7 (PhotoShop Script)
 
-Studio time for homework 6 (Endless Runner)/7 (Ruby exercises) and Project 2.
+Studio time for homework 6 (Endless Runner) & 7 (Photoshop) and Project 2.
 
 
 ##8:2
-Javascript + photoshop scripting. Real world examples.
 
-ASSIGN HOMEWORK 8 (PhotoShop Script)
-
-Studio time for homework 6 (Endless Runner)/7 (fun Ruby Exercises)/8 (Photoshop script) and Project 2
+Studio time for homework 6 (Endless Runner)/7 (Photoshop script) and Project 2
 
 
 ##9:1
 HOMEWORK 6 DUE
 
 Walk through Prof H's Ludum Dare projects and how they're built (3 are Flash, 3 are Unity)
-Studio time for homework 7/8 and Project 2
+Studio time for homework 7 and Project 2
 
 ##9:2
 Walk through Dragon Army games -- show real-life examples of architecture and pipeline (using everything we've learned in class).
 
-Studio time for homework 7/8 and Project 2
+Studio time for homework 7 and Project 2
 
 ##10:1
-Homework 7/8 due. 
+Homework 7 due. 
 
 Help with Project 2.
 
