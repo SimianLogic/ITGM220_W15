@@ -1,4 +1,4 @@
-#Professor H's Guide to Knowing Enough to Be Dangerous
+#Intro Game Programming Study Guide
 * What is a variable?
 * What is the difference between a primitive and an object?
 * What is an array? How do you declare an array of ints?
