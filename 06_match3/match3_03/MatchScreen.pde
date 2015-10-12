@@ -57,16 +57,15 @@ class MatchScreen extends GameScreen
          //get a random int from 1 to 10  (ceil = "round up")
          int which_gem = ceil(random(10));
          
-         
          //Sprite gem = new Sprite("web_images/jewel" + which_gem + ".png", start_x + i*tile_width, start_y+j*tile_width);
          //spriteList.add(gem);
-         
-         
+
          Sprite gem_normal = new Sprite("web_images/jewel" + which_gem + ".png", start_x + i*tile_width, start_y+j*tile_width);
          Sprite gem_up = new Sprite("web_images/jewel" + which_gem + ".png", start_x + i*tile_width, start_y+j*tile_width, 105, 105);
          Sprite gem_down = new Sprite("web_images/jewel" + which_gem + ".png", start_x + i*tile_width, start_y+j*tile_width, 90, 90);
          Button gem_button = new Button(i + "_" + j, gem_normal, gem_up, gem_down);
          gemList.add(gem_button);
+         //buttonList.add(gem_button);
          
       }
     }
@@ -92,6 +91,7 @@ class MatchScreen extends GameScreen
   
   void mousePressed()
   {
+    super.mousePressed();
     for(Button gem : gemList)
     {
       gem.mousePressed();

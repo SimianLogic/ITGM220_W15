@@ -1,7 +1,6 @@
 
 GameScreen menuScreen;
 MatchScreen matchScreen;
-GameScreen gameOverScreen;  //HW: MAKE A GAME OVER SCREEN
 
 GameScreen currentScreen; //a placeholder for our currently active screen
 

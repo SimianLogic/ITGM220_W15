@@ -73,7 +73,7 @@ class PongGameScreen
     }
     
     //player1.y += player1Velocity;
-    player1.y = constrain(player1.y + player1Velocity, boardRect.top(), boardRect.bottom());
+    player1.y = constrain(player1.y + player1Velocity, boardRect.top() + player1.height/2, boardRect.bottom() - player1.height/2);
     player2.y = constrain(player2.y + player2Velocity, boardRect.top(), boardRect.bottom());
     
     ball.draw();

@@ -49,7 +49,7 @@ Successive steps illustrate the components of a Match-3 Game.
 * add the world's worst scoring mechanic
 
 # Matching 05
-* let's reset the board when we stat a new game
+* let's reset the board when we start a new game
 * let's add a variable to the main sketch for high score and draw it on screen
 
 # Matching 06

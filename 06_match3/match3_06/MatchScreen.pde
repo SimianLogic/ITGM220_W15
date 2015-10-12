@@ -120,17 +120,10 @@ class MatchScreen extends GameScreen
     if(clicked_gem != null)
     {
       //WE KNOW A GEM WAS CLICKED
-    
-      //take our clicked gem out of the buttonList, which will "kill it"
-      // (it will no longer get events or draw calls
-      gemList.remove(clicked_gem);
-      
-      println("KILLED GEM AT " + clicked_gem.gridX + "," + clicked_gem.gridY);
-      println("GEM HAD A VALUE OF " + clicked_gem.value);
       
       //reset our counter
-      clearedThisTurn = 1;  //we're already removing this one
-      clearNeighboringGemsThatMatch(clicked_gem);
+      clearedThisTurn = 0;
+      clearGemAndNeighbors(clicked_gem);
       
       //award points equal to clearedThisTurn SQUARED
       println("CLEARED " + clearedThisTurn);
@@ -141,8 +134,12 @@ class MatchScreen extends GameScreen
     return null;
   }
   
-  void clearNeighboringGemsThatMatch(GemButton gem)
+  void clearGemAndNeighbors(GemButton gem)
   {
+    gemList.remove(gem);
+    clearedThisTurn += 1;
+    
+    
     //you can't modify the contents of an ArrayList while you're 
     //going through it, so we need to save the "dead" gems for after
     ArrayList<GemButton> dead_gems = new ArrayList<GemButton>();
@@ -169,21 +166,10 @@ class MatchScreen extends GameScreen
       }
     }
     
-    //we now need to make TWO passes through dead gems
-    // 1) remove all of the dead gems from our active gemList
-    // 2) check all of the dead gem neighbors to see if the chain continues
-    
-    for(GemButton deader : dead_gems)
-    {
-      //also need to increment our round score by 1!
-      clearedThisTurn += 1;
-      gemList.remove(deader);
-    }
-    
     //if we didn't pick up any new dead gems, this will be empty and nothing will happen!
     for(GemButton deader : dead_gems)
     {
-      clearNeighboringGemsThatMatch(deader);
+      clearGemAndNeighbors(deader);
     }
     
   }

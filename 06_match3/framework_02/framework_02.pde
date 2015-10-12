@@ -51,7 +51,7 @@ void setup()
     //the sprites are 100x100, so we can't fit all 10 without overlap... so let's make them 75x75
     //a string + an integer results in a string, so if you name your images with repeating digits
     //  it's super-easy to use a for-loop to load them ("image1", "image2", etc)
-    Sprite loop_sprite = new Sprite("web_images/jewel" + (i+1) + ".png", 40+i*80,550, 75, 75);
+    Sprite loop_sprite = new Sprite("web_images/jewel" + (i+1) + ".png", 40+i*40,550, 75, 75);
     spriteExamples.add(loop_sprite);
   }
   
@@ -64,6 +64,8 @@ void draw()
 {
   //clear the background to a light gray color
   background(175);
+  
+  collisionSprite.draw();
   
   //draw all the rectangles in rectangleExamples with a for-each loop
   for(Rectangle local_rect : spriteExamples)
@@ -93,7 +95,7 @@ void draw()
      //collisionRectangle.fillColor = local_rect.fillColor;
    }
   }
-  collisionSprite.draw();
+  
   
   
   if(resetSprite.intersects(collisionSprite))
