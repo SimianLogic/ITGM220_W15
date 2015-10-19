@@ -134,16 +134,17 @@ package
 			scoreLabel.text = "" + score;
 		}
 		
+		
 		public function clearGemAndNeighbors(gem:GemButton):void
 		{
-			var gem_index:int = gems.indexOf(gem);
-			gems.splice(gem_index,1);
+			var which:int = gems.indexOf(gem);
+			gems.splice(which, 1);
 			removeChild(gem);
 			
 			clearedThisTurn += 1;
 			
 			
-			//you shouldn't modify the contents of an array while you're 
+			//you can't modify the contents of an ArrayList while you're 
 			//going through it, so we need to save the "dead" gems for after
 			var dead_gems:Array = [];
 			
@@ -154,13 +155,13 @@ package
 					//same row
 					if(gem.gridX == board_gem.gridX)
 					{
-						//check above & below
+						//check left & right
 						if(gem.gridY == board_gem.gridY + 1 || gem.gridY == board_gem.gridY - 1)
 						{
 							dead_gems.push(board_gem);
 						}
 					}else if(gem.gridY == board_gem.gridY){
-						//check left & right
+						//check above & below
 						if(gem.gridX == board_gem.gridX + 1 || gem.gridX == board_gem.gridX - 1)
 						{
 							dead_gems.push(board_gem);
@@ -176,6 +177,49 @@ package
 			}
 			
 		}
+		
+//		public function clearGemAndNeighbors(gem:GemButton):void
+//		{
+//			var gem_index:int = gems.indexOf(gem);
+//			gems.splice(gem_index,1);
+//			removeChild(gem);
+//			
+//			clearedThisTurn += 1;
+//			
+//			
+//			//you shouldn't modify the contents of an array while you're 
+//			//going through it, so we need to save the "dead" gems for after
+//			var dead_gems:Array = [];
+//			
+//			for each(var board_gem:GemButton in gems)
+//			{
+//				if(board_gem.value == gem.value)
+//				{
+//					//same row
+//					if(gem.gridX == board_gem.gridX)
+//					{
+//						//check above & below
+//						if(gem.gridY == board_gem.gridY + 1 || gem.gridY == board_gem.gridY - 1)
+//						{
+//							dead_gems.push(board_gem);
+//						}
+//					}else if(gem.gridY == board_gem.gridY){
+//						//check left & right
+//						if(gem.gridX == board_gem.gridX + 1 || gem.gridX == board_gem.gridX - 1)
+//						{
+//							dead_gems.push(board_gem);
+//						}
+//					}
+//				}
+//			}
+//			
+//			//if we didn't pick up any new dead gems, this will be empty and nothing will happen!
+//			for each(var deader:GemButton in dead_gems)
+//			{
+//				clearGemAndNeighbors(deader);
+//			}
+//			
+//		}
 		
 		
 	}

@@ -29,14 +29,14 @@ package
 		
 		
 		//magic numbers -- just guess & checked these
-		var tileWidth:Number = 115;
-		var tileHeight:Number = 115;
+		public var tileWidth:Number = 115;
+		public var tileHeight:Number = 115;
 		
 		//use arithmetic to center all this
-		var totalWidth:Number = 5*tileWidth;
-		var startX:Number = (640 - totalWidth)/2;
+		public var totalWidth:Number = 5*tileWidth;
+		public var startX:Number = (640 - totalWidth)/2;
 		
-		var startY:Number = 160;
+		public var startY:Number = 160;
 		
 		public function MatchScreen()
 		{
@@ -202,12 +202,11 @@ package
 					
 					if(!got_one)
 					{
-						trace("ADD A NEW GEM AT " + i + "," + j);
 						var which_gem:int = Math.floor(Math.random()*10);
 						
 						var new_gem:GemButton = new GemButton(which_gem, i, j);
-						new_gem.x = startX + i*tileWidth + (tileWidth-new_gem.width)/2;
-						new_gem.y = startY + j*tileHeight + (tileWidth-new_gem.height)/2;
+						new_gem.x = startX + i*tileWidth + (tileWidth-gem.width)/2;
+						new_gem.y = startY + j*tileHeight + (tileWidth-gem.height)/2;
 						addChild(new_gem);
 						
 						new_gem.addEventListener(MouseEvent.CLICK, handleGemClick);
@@ -219,6 +218,41 @@ package
 				}
 			}
 		}
+		
+//		public function refillGems():void
+//		{
+//			for(var i:int = 0; i < 5; i++)
+//			{
+//				for(var j:int = 0; j < 6; j++)
+//				{
+//					var got_one:Boolean = false;
+//					for each(var gem:GemButton in gems)
+//					{
+//						if(gem.gridX == i && gem.gridY == j)
+//						{
+//							got_one = true;
+//						}
+//					}
+//					
+//					if(!got_one)
+//					{
+//						trace("ADD A NEW GEM AT " + i + "," + j);
+//						var which_gem:int = Math.floor(Math.random()*10);
+//						
+//						var new_gem:GemButton = new GemButton(which_gem, i, j);
+//						new_gem.x = startX + i*tileWidth + (tileWidth-new_gem.width)/2;
+//						new_gem.y = startY + j*tileHeight + (tileWidth-new_gem.height)/2;
+//						addChild(new_gem);
+//						
+//						new_gem.addEventListener(MouseEvent.CLICK, handleGemClick);
+//						new_gem.name = i + "_" + j;
+//						
+//						gems.push(new_gem);
+//					}
+//					
+//				}
+//			}
+//		}
 		
 		
 	}

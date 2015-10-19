@@ -122,11 +122,12 @@ package
 		
 		public function handleGemClick(event:MouseEvent):void
 		{
+
 			var gem:GemButton = event.target as GemButton;
 			trace("CLICKED ON " + gem.name);
 			
 			score += gem.value;
-			scoreLabel.text = "" + score;
+			scoreLabel.text = score.toString();
 			
 			removeChild(gem);
 		}

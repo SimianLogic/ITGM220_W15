@@ -73,6 +73,7 @@ package
 			
 			var start_y:Number = 160;
 			
+			
 			for(var i:int = 0; i < 5; i++)
 			{
 				for(var j:int = 0; j < 6; j++)
