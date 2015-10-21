@@ -122,11 +122,11 @@ Game 8: Endless Runner (Unity)
 ASSIGN HOMEWORK 6 (Endless Runner)
 
 ##7:2
-Studio time -- help out with homework 5/6 and Project 2.
+Studio time -- help out with homework 5 (GOLF)/6 (RUNNER) and Project 2.
 Project 2 ideas must be approved by the end of this class.
 
 ##8:1
-HOMEWORK 5 DUE
+HOMEWORK 5 (MINIGOLF) DUE
 
 Javascript + photoshop scripting. Real world examples.
 
@@ -152,7 +152,7 @@ Walk through Dragon Army games -- show real-life examples of architecture and pi
 Studio time for homework 7 and Project 2
 
 ##10:1
-Homework 7 due. 
+HOMEWORK 7 DUE (Photoshop Script)
 
 Help with Project 2.
 
