@@ -104,6 +104,7 @@ Present ideas on a scale from easy->harder. Easy doesn't mean worse grade.
 Must have at least 3 screens. Must get idea approved.
 
 ##6:2
+ASSIGN HOMEWORK 5 -- MINIGOLF
 
 Project 2 initial ideas due (not graded).
 
