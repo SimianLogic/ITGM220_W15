@@ -17,14 +17,29 @@ public class GolfMenu : MonoBehaviour {
 
 	public void HandleButton(string button_name)
 	{
+		Player.shotsTaken = 0;
+
 		switch(button_name)
 		{
 			case "Level_1":
 				Player.level = 1;
-				Player.shotsTaken = 0;
 
 				//TODO: MAKE L1 and load that instead
-				Application.LoadLevel("golf_00");
+				Application.LoadLevel("golf_01");
+				break;
+
+			case "Level_2":
+				Player.level = 2;
+				
+				//TODO: MAKE L1 and load that instead
+				Application.LoadLevel("golf_02");
+				break;
+
+			case "Level_3":
+				Player.level = 3;
+				
+				//TODO: MAKE L1 and load that instead
+				Application.LoadLevel("golf_03");
 				break;
 
 			default:

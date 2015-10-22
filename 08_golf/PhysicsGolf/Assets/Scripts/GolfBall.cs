@@ -4,12 +4,12 @@ using UnityEngine.UI;  //needed for text
 
 public class GolfBall : MonoBehaviour 
 {
+	[Header("My Config")]
 	public SpriteRenderer arrow; 	//UNITY EDITOR -- our arrow sprite for visual feedback
 	public float throwMultiplier; 	//UNITY EDITOR -- how hard should we multiply our pullback strength?
 	public Text shotsTakenLabel;	//UNITY EDITOR -- pointer to our score text
 	public Text levelLabel;			//UNITY EDITOR -- pointer to our level text
 	public Text instructions;		//UNITY EDITOR -- pointer to our instructions
-
 
 	private float clickX;
 	private float clickY;
@@ -146,8 +146,6 @@ public class GolfBall : MonoBehaviour
 
 	     	pullbackAngle = -Mathf.Atan2(dx, dy) * Mathf.Rad2Deg - 90f;;
 	     	arrow.transform.localEulerAngles = new Vector3(0f,0f,pullbackAngle);
-
-
 
 	     }
 	}
