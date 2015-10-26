@@ -114,6 +114,12 @@ Studio time -- help out with Unity setup, Project 1, Homework 5. Whiteboarding p
 ##7:1 
 PROJECT 1 DUE
 
+Prof OUT
+Work on Study Guide (bonus assignment)
+Work on Project 1, Homework 5 (GOLF)
+
+
+##7:2
 Game 8: Endless Runner (Unity)
 * Deconstruct the gameplay.
 * Obstacles/gameplay. 
@@ -121,8 +127,6 @@ Game 8: Endless Runner (Unity)
 
 ASSIGN HOMEWORK 6 (Endless Runner)
 
-##7:2
-Studio time -- help out with homework 5 (GOLF)/6 (RUNNER) and Project 2.
 Project 2 ideas must be approved by the end of this class.
 
 ##8:1
