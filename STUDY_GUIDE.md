@@ -1,16 +1,25 @@
 #Intro Game Programming Study Guide
 
-Example Questions / Answers:
+## Example Questions / Answers:
+
 Q: What is a variable?
+
 A: A variable is a named thing that can hold a value of a specific type. Whenever you type that name later, you get back that value. In the reference below we're storing the value 7 in the variable named "x".
+
 Example: https://github.com/SimianLogic/ITGM220_W15/blob/master/00_practice/processing/sketch_02/sketch_02.pde
+
 Line: 1
 
 Q: What is the difference between a primitive and an object?
+
 A: A primitive is a built-in data type like int or boolean. An object is a custom class made up of variables and functions. Most primitives can be assigned in-line, but with variables you have to use the "new" keyword.
+
 Primitive Example: https://github.com/SimianLogic/ITGM220_W15/blob/master/00_practice/processing/sketch_02/sketch_02.pde
+
 Line: 1
+
 Object Example: https://github.com/SimianLogic/ITGM220_W15/blob/master/00_practice/processing/sketch_25/sketch_25.pde
+
 Line: 2 (declared) and 11 (instantiated)
 
 
