@@ -14,50 +14,80 @@ public class EndlessRunner : MonoBehaviour {
 	private Vector2 startPosition;
 	private GameObject goal;
 
-
+	private int totalPlatforms = 0;
 
 	// Use this for initialization
 	void Start () 
 	{
 		startPosition = mainCharacter.transform.position;
 
-		for(int i = 0; i < numPlatforms-1; i++)
+		//to subscribe to a Signal, we use += and the name of the function
+		mainCharacter.OnTrigger += OnDudeTrigger;
+		mainCharacter.OnCollide += OnDudeCollide;
+
+		//add a sane first platform guaranteed
+		GameObject obj = Instantiate(Resources.Load("Platform")) as GameObject;
+		totalPlatforms = 1;
+
+		AddPlatforms();
+	}
+
+	//each time this is called, we'll extend our level by numPlatforms new platforms
+	void AddPlatforms()
+	{
+		for(int i = totalPlatforms; i < totalPlatforms + numPlatforms-1; i++)
 		{
-			GameObject obj = Instantiate(Resources.Load("Platform")) as GameObject;	
+			//we're going to select one randomly from this list. to increase the probability of one
+			//type over another, include it more than once!
+			string[] platforms = {"Platform", "Platform", "Platform", "Blocky", "Gap"};
+			int which_platform = Random.Range(0, platforms.Length);
+			GameObject obj = Instantiate(Resources.Load(platforms[which_platform])) as GameObject;	
 			obj.transform.Translate(Vector3.right * platformSpacingX*i);
-			
-			//we always want the first platform to be in the respawn point
-			if(i > 0)
-			{
-				obj.transform.Translate(Vector3.up * Random.Range(-platformSpacingY, platformSpacingY));	
-			}
+			obj.transform.Translate(Vector3.up * Random.Range(-platformSpacingY, platformSpacingY));	
 			
 		}
 
 		goal = Instantiate(Resources.Load("Goal")) as GameObject;	
-		goal.transform.Translate(Vector3.right * platformSpacingX*(numPlatforms-1));
+		goal.transform.Translate(Vector3.right * platformSpacingX*(totalPlatforms + numPlatforms-1));
 
-		//to subscribe to a Signal, we use += and the name of the function
-		mainCharacter.OnTrigger += OnDudeTrigger;
+
+		totalPlatforms += numPlatforms;
+	}
+
+	void OnDudeCollide(Collision2D collision)
+	{
+		if(collision.collider is EdgeCollider2D)
+		{
+			Debug.Log("HIT A WALL");
+			ResetCharacter();
+		}
 	}
 
 	void OnDudeTrigger(Collider2D collider)
 	{
 		if(collider.gameObject == goal)
 		{
-			Debug.Log("GOOOOOAL");
+			// Debug.Log("GOOOOOAL");
+			AddPlatforms();
 		}
 	}
 	
 	// Update is called once per frame
 	void Update () 
 	{
-		
+
 		if(mainCharacter.transform.position.y < -2)
 		{
-			mainCharacter.transform.position = startPosition;
-			mainCharacter.GetComponent<Rigidbody2D>().velocity = new Vector2(0,0);
+			ResetCharacter();
 		}
 
+	}
+
+	void ResetCharacter()
+	{
+		Debug.Log("YOU RAN " + mainCharacter.transform.position.x + " Meters");
+		
+		mainCharacter.transform.position = startPosition;
+		mainCharacter.GetComponent<Rigidbody2D>().velocity = new Vector2(Dude.START_VELOCITY,0);
 	}
 }

@@ -3,8 +3,11 @@ using System.Collections;
 
 public class Dude : MonoBehaviour 
 {
-	public delegate void CollisionSignalDelegate(Collider2D collision);
-	public event CollisionSignalDelegate OnTrigger;
+	public delegate void ColliderSignalDelegate(Collider2D collider);
+	public event ColliderSignalDelegate OnTrigger;
+
+	public delegate void CollisionSignalDelegate(Collision2D collision);	
+	public event CollisionSignalDelegate OnCollide;
 
 	public Camera camera;
 
@@ -14,7 +17,14 @@ public class Dude : MonoBehaviour
 	public Sprite jump;
 	public Sprite fall;
 
-	private const float STEP_RATE = 0.20f;
+	public const float START_VELOCITY = 1.25f;
+	private float velocity = 1.5f;
+	public void SetVelocity(float f)
+	{
+		velocity = f;
+	}
+
+	private const float STEP_RATE = 0.15f;
 	private float stepTime = 0f;
 	private int currentStep = 0;
 	
@@ -34,6 +44,14 @@ public class Dude : MonoBehaviour
 			OnTrigger(coll);
 		}
 	}
+
+	void OnCollisionEnter2D(Collision2D coll)
+	{
+		if(OnCollide != null)
+		{
+			OnCollide(coll);
+		}
+	}
 	
 	// Update is called once per frame
 	void Update () 
@@ -49,23 +67,26 @@ public class Dude : MonoBehaviour
 		{
 			if(Input.GetKeyDown("w") || Input.GetKeyDown("up") || Input.GetKeyDown("space"))
 			{
-				body.AddForce(new Vector2(0,150f));
+				body.AddForce(new Vector2(0,125f));
 			}
 		}
 
-		if(Input.GetKey("left") || Input.GetKey("a"))
-		{
-			gameObject.transform.Translate(Vector3.left * 0.025f);
-			gameObject.transform.localScale = new Vector2(-1f,1f);
-			is_moving = true;
-		}
+		body.velocity = new Vector2(velocity, body.velocity.y);
+		is_moving = true;
 
-		if(Input.GetKey("right") || Input.GetKey("d"))
-		{
-			gameObject.transform.Translate(Vector3.right * 0.025f);
-			gameObject.transform.localScale = new Vector2(1f,1f);
-			is_moving = true;
-		}
+		// if(Input.GetKey("left") || Input.GetKey("a"))
+		// {
+		// 	gameObject.transform.Translate(Vector3.left * 0.025f);
+		// 	gameObject.transform.localScale = new Vector2(-1f,1f);
+		// 	is_moving = true;
+		// }
+
+		// if(Input.GetKey("right") || Input.GetKey("d"))
+		// {
+		// 	gameObject.transform.Translate(Vector3.right * 0.025f);
+		// 	gameObject.transform.localScale = new Vector2(1f,1f);
+		// 	is_moving = true;
+		// }
 		
 
 		//our x/y movement is just applied to the sprite, but our jump movement
