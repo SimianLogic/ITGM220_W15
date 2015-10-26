@@ -23,8 +23,9 @@
 ## "Polish" Elements for Final Project
 These are examples of things that can be done to elevate your project into A territory.
 
+1. Art it up! Make it look super cool (note that this doesn't require any programming skill, so if you're struggling with the code just make somethign simple and polish the heck out of it)
+1. Add some sort of high score persistence. Can I replay to get a better high score?
 1. Add sound effects.
-2. Add animated elements (think code-animation, not sprite sheets) -- do buttons "move" or "squish" when you click on them? Do elements fade or transition in or just pop into place? 
-3. Add some sort of high score persistence. Can I replay to get a better high score?
-4. Art it up! Make it look super cool (note that this doesn't require any programming skill, so if you're struggling with the code just make somethign simple and polish the heck out of it)
-5. Add extra screens. Maybe you have a start screen that leads into a level select screen.
+1. Add extra screens. Maybe you have a start screen that leads into a level select screen.
+1. Add animated elements (think code-animation, not sprite sheets) -- do buttons "move" or "squish" when you click on them? Do elements fade or transition in or just pop into place? 
+1. Some kind of particle effect (on victory or when an enemy is killed or when a block is smashed).
