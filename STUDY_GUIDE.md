@@ -1,11 +1,13 @@
+#Intro Game Programming Study Guide
+
 
 1. What is a variable?
 
-#Intro Game Programming Study Guide
+
 
 ## Required for Final Project
 1. What is the difference between a primitive and an object?
-1. What's the difference between a class variable and a member variable?
+1. What's the difference between a class variable and a local variable?
 1. What is an array? How do you declare an array of ints?
 1. What does immutable mean? 
 1. What does mutable mean?
@@ -36,3 +38,21 @@
 1. What is a subclass? 
 1. What does "super" mean?
 1. What is a static variable?
+
+
+
+## Checklist for Final Project
+1. Use at least 1 local variable and one class variable.
+1. Use at least 1 mutable container class.
+1. Use at least 1 immutable container class.
+1. Write at least 1 void function.
+1. Write at least 1 non-void function.
+1. One of your functions must take a parameter.
+1. Write at least one conditional statement.
+1. Use at least 1 logical operator -- AND, OR, NOT
+1. Use at least 1 for loop.
+1. Write at least 1 custom class with a constructor.
+1. Create at least 1 instance of your class.
+1. Make use of at least 1 built-in class (stored in a variable, instantiated).
+
+
