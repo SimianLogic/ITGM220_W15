@@ -1,4 +1,11 @@
 #Intro Game Programming Study Guide
+This study guide is meant to be a scavenger hunt through this quarter's sample code, but also requires you to describe in words what each concept means. Using the format provided, fill out the study guide "Required for Final Project" and "Optional for Final Project" sections using the format below. For each question, you must:
+
+* copy/paste the question into your own document
+* put your answer below the question
+* put a link to a file in the github repository that illustrates the concept
+* put a line number (or multiple line numbers) in that file
+
 
 ## Example Questions / Answers:
 
