@@ -22,7 +22,7 @@ function main()
 	var goodState = docRef.activeHistoryState;
 	app.preferences.rulerUnits = Units.PIXELS;
 	
-	var icon_sizes = [1024,512,256,152,144,128,120,114,96,76,72,57,48,36];
+	var icon_sizes = [2048,1024,512,256,152,144,128,120,114,96,76,72,57,48,36];
 	for(var i=0; i < icon_sizes.length; i++)
 	{
 	    var resize = app.activeDocument.resizeImage(icon_sizes[i],icon_sizes[i]);
